@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 import { Container, Background } from './styled'
 import { SideBar } from '../SideBar'
@@ -7,7 +8,14 @@ import { Spinner } from 'src/components/Spinner'
 import { ScrollButton } from 'src/components/ScrollButton'
 
 export const Layout = ({ children }) => {
+  const router = useRouter()
   const [sideBarActive, setSideBarActive] = useState(false)
+
+  useEffect(() => {
+    if (router.route === '/') {
+      setSideBarActive(true)
+    }
+  }, [router.route])
 
   return (
     <>
