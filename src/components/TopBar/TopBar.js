@@ -11,6 +11,7 @@ import {
   LeftContainer,
   BackButton,
   MenuButton,
+  RightContainer,
 } from './styled'
 import { SideBar } from '../SideBar'
 
@@ -67,10 +68,11 @@ export const TopBar = observer(({ onMenuButtonClick }) => {
         {renderBackButton()}
         {renderBreadcrumb()}
       </LeftContainer>
-      <a href="#bottom">down</a>
-      <MenuButton onClick={onMenuButtonClick}>
-        Menu
-      </MenuButton>
+      <RightContainer>
+        <MenuButton onClick={onMenuButtonClick}>
+          MENU
+        </MenuButton>
+      </RightContainer>
     </Container>
   )
 })

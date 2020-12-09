@@ -17,6 +17,10 @@ export const LeftContainer = styled.div`
   display: flex;
 `
 
+export const RightContainer = styled.div`
+  display: flex;
+`
+
 export const BreadcrumbContainer = styled.div`
   height: 100%;
   margin-left: 8px;
