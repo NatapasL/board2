@@ -24,7 +24,7 @@ export const ArrowContainer = styled.a`
   align-items: center;
   font-size: 20px;
 
-  &:first-child {
+  &:first-of-type {
     border-right: 1px solid rgba(110, 120, 129, 0.35);
   }
 `
