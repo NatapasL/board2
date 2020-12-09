@@ -31,9 +31,6 @@ export const SideBar = observer(({ active, onUpdateActive }) => {
             <ItemContainer>
               <ItemLeftText>
                 : {board.slug}
-                <div style={{ fontSize: '11px', fontWeight: 400, marginTop: '2px' }}>
-                  {board.description}
-                </div>
               </ItemLeftText>
               <ItemRightText>
                 <LinkButton>
