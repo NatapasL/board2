@@ -10,6 +10,7 @@ import {
   ItemLeftText,
   ItemRightText,
   LinkButton,
+  SelectBar
 } from './styled'
 
 export const SideBar = observer(({ active, onUpdateActive }) => {
@@ -25,12 +26,15 @@ export const SideBar = observer(({ active, onUpdateActive }) => {
 
   return (
     <Container active={active}>
+      <SelectBar>
+        Select Board
+      </SelectBar>
       <ListContainer>
         {boardStore.boardList.map(board => (
           <Link key={board.id} href={`/boards?board=${board.slug}`} passHref>
             <ItemContainer>
               <ItemLeftText>
-                : {board.slug}
+                {board.slug}
               </ItemLeftText>
               <ItemRightText>
                 <LinkButton>
