@@ -70,6 +70,7 @@ export const ItemLeftText = styled.div`
 export const ItemRightText = styled.div`
   display: flex;
   height: 100%;
+  min-height: 100%;
   align-items: center;
   justify-content: flex-end;
   padding-right: 16px;
