@@ -5,16 +5,17 @@ import Link from 'next/link'
 import { storesContext } from '../../contexts/storesContext'
 import {
   Container,
-  Title,
-  TitleContainer,
   ItemContainer,
+  ListContainer,
+  ItemLeftText,
+  ItemRightText,
+  LinkButton,
 } from './styled'
 
 export const SideBar = observer(({ active, onUpdateActive }) => {
   const { boardStore } = useContext(storesContext)
 
   useEffect(() => {
-    console.log('mounted')
     boardStore.fetchBoardList()
   }, [])
 
@@ -24,16 +25,25 @@ export const SideBar = observer(({ active, onUpdateActive }) => {
 
   return (
     <Container active={active}>
-      <TitleContainer>
-        <Title>List</Title>
-      </TitleContainer>
-      {boardStore.boardList.map(board => (
-        <Link key={board.id} href={`/boards?board=${board.slug}`} passHref>
-          <ItemContainer>
-            {board.title}
-          </ItemContainer>
-        </Link>
-      ))}
+      <ListContainer>
+        {boardStore.boardList.map(board => (
+          <Link key={board.id} href={`/boards?board=${board.slug}`} passHref>
+            <ItemContainer>
+              <ItemLeftText>
+                : {board.slug}
+                <div style={{ fontSize: '11px', fontWeight: 400, marginTop: '2px' }}>
+                  {board.description}
+                </div>
+              </ItemLeftText>
+              <ItemRightText>
+                <LinkButton>
+                  {board.title.toUpperCase()}
+                </LinkButton>
+              </ItemRightText>
+            </ItemContainer>
+          </Link>
+        ))}
+      </ListContainer>
     </Container>
   )
 })

@@ -10,10 +10,12 @@ export const Container = styled.div`
   right: 0;
   background-color: ${colors.grey};
   overflow: hidden;
-  transition: width 450ms;
+  transition: width 250ms;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: scroll;
+  scroll-behavior: smooth;
 `
 
 export const TitleContainer = styled.div`
@@ -23,7 +25,7 @@ export const TitleContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 8px 0;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 `
 
 export const Title = styled.h1`
@@ -38,29 +40,46 @@ export const Title = styled.h1`
   white-space: nowrap;
 `
 
+export const ListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding-bottom: 16px;
+  width: 100%;
+  height: 100%;
+`
+
 export const ItemContainer = styled.a`
   background-color: ${colors.white};
-  width: 100%;
+  margin-bottom: 2px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 4px;
-  font-size: 18px;
-  font-weight: bold;
-  flex-direction: column;
+  justify-content: space-between;
   white-space: nowrap;
+  width: 100%;
+`
 
-  &:not(:last-child) {
-    &:after {
-      content: '';
-      display: block;
-      width: 132px;
-      border-bottom: 1px solid ${colors.grey};
-      margin-top: 4px;
-    }
-  }
+export const ItemLeftText = styled.div`
+  font-weight: bold;
+  font-size: 16px;
+  padding: 7px 8px 7px 16px;
+  flex-grow: 1;
+  overflow: hidden;
+`
 
-  &:last-child {
-    padding-bottom: 12px;
-  }
+export const ItemRightText = styled.div`
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 16px;
+  padding-left: 8px;
+`
+
+export const LinkButton = styled.div`
+  font-size: 12px;
+  background-color: ${colors.grey};
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
 `
