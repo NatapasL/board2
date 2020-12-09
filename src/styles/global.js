@@ -9,6 +9,10 @@ export const globalStyle = css`
     color: ${colors.black2};
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   button {
     outline: none;
   }
