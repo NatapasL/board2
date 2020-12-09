@@ -71,7 +71,7 @@ export const ItemRightText = styled.div`
   display: flex;
   height: 100%;
   min-height: 100%;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-end;
   padding-right: 16px;
   padding-left: 8px;
@@ -81,6 +81,6 @@ export const LinkButton = styled.div`
   font-size: 12px;
   background-color: ${colors.grey};
   padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: 0 0 4px 4px;
   font-weight: bold;
 `
