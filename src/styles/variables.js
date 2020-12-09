@@ -14,6 +14,7 @@ export const zIndex = {
   30: 30,
   40: 40,
   50: 50,
+  9999: 9999
 }
 
 export const colors = {

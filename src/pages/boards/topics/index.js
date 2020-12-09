@@ -6,6 +6,7 @@ import { storesContext } from 'src/contexts/storesContext'
 import { Layout } from 'src/components/Layout'
 import { TopicPage } from 'src/components/TopicPage'
 import { getRecentPosts, getAllPosts } from 'src/api/postApi'
+import { showSpinner, hideSpinner } from 'src/components/Spinner'
 
 export default observer(() => {
   const router = useRouter()
@@ -14,12 +15,20 @@ export default observer(() => {
   const { posts } = postStore
 
   const fetchData = (topic, recent) => {
+    showSpinner()
+
     if (recent) {
       getRecentPosts(topic)
-        .then(({ data }) => postStore.setPosts(data.posts))
+        .then(({ data }) => {
+          postStore.setPosts(data.posts)
+          hideSpinner()
+        })
     } else {
       getAllPosts(topic)
-        .then(({ data }) => postStore.setPosts(data))
+        .then(({ data }) => {
+          postStore.setPosts(data)
+          hideSpinner()
+        })
     }
   }
 

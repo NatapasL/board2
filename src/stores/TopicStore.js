@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx'
 import { getTopic } from 'src/api/topicApi'
+import { showSpinner, hideSpinner } from 'src/components/Spinner'
 
 class TopicStore {
   @observable topics = undefined
@@ -18,9 +19,11 @@ class TopicStore {
       return
     }
 
+    showSpinner()
     getTopic(id).then(({ data }) => {
       this.currentTopic = data
       this.topics = [data]
+      hideSpinner()
     })
   }
 }

@@ -1,8 +1,8 @@
 import { createContext } from 'react'
 
-import BoardStore from '../stores/BoardStore'
-import TopicStore from '../stores/TopicStore'
-import PostStore from '../stores/PostStore'
+import BoardStore from 'src/stores/BoardStore'
+import TopicStore from 'src/stores/TopicStore'
+import PostStore from 'src/stores/PostStore'
 
 export const storesContext = createContext({
   boardStore: new BoardStore(),

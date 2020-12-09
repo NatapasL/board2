@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Container, Background } from './styled'
 import { SideBar } from '../SideBar'
 import { TopBar } from '../TopBar'
+import { Spinner } from 'src/components/Spinner'
 
 export const Layout = ({ children }) => {
   const [sideBarActive, setSideBarActive] = useState(false)
@@ -16,6 +17,7 @@ export const Layout = ({ children }) => {
         <div id="bottom" />
       </Background>
       <SideBar active={sideBarActive} />
+      <Spinner />
     </>
   )
 }

@@ -2,10 +2,11 @@ import { useState, useEffect, useContext } from 'react'
 import { observer } from 'mobx-react-lite'
 import { useRouter } from 'next/router'
 
-import { storesContext } from '../../contexts/storesContext'
-import { Layout } from '../../components/Layout'
-import { BoardPage } from '../../components/BoardPage'
-import { getRecentTopics, getAllTopics } from '../../api/topicApi'
+import { storesContext } from 'src/contexts/storesContext'
+import { Layout } from 'src/components/Layout'
+import { BoardPage } from 'src/components/BoardPage'
+import { getRecentTopics, getAllTopics } from 'src/api/topicApi'
+import { showSpinner, hideSpinner } from 'src/components/Spinner'
 
 export default observer(() => {
   const router = useRouter()
@@ -14,12 +15,20 @@ export default observer(() => {
   const { topics } = topicStore
 
   const fetchData = (board, all) => {
+    showSpinner()
+
     if (all) {
       getAllTopics(board)
-        .then(({ data }) => topicStore.setTopics(data))
+        .then(({ data }) => {
+          topicStore.setTopics(data)
+          hideSpinner()
+        })
     } else {
       getRecentTopics(board)
-        .then(({ data }) => topicStore.setTopics(data.topics))
+        .then(({ data }) => {
+          topicStore.setTopics(data.topics)
+          hideSpinner()
+        })
     }
   }
 
