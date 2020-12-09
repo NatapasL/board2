@@ -68,6 +68,11 @@ export const TopBar = observer(({ onMenuButtonClick }) => {
         {renderBackButton()}
         {renderBreadcrumb()}
       </LeftContainer>
+      {!currentTopic && (
+        <div>
+          Sui-chan wa kyou mou kawaii!
+        </div>
+      )}
       <RightContainer>
         <MenuButton onClick={onMenuButtonClick}>
           MENU
