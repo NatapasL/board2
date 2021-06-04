@@ -1,10 +1,24 @@
 import styled from '@emotion/styled'
+import { keyframes } from '@emotion/core'
 
 import { colors } from '../../styles/variables'
+
+const highlight = keyframes`
+  0%, 100% {
+    background-color: ${colors.white};
+  }
+  50% {
+    background-color: ${colors.grey};
+  }
+`
 
 export const Container = styled.div`
   background-color: ${colors.white};
   padding: 8px 16px;
+`
+
+export const ActiveContainer = styled(Container)`
+  animation: ${highlight} 1.5s 2;
 `
 
 export const Header = styled.div`

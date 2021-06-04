@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import processString from 'react-process-string'
@@ -5,6 +6,7 @@ import processString from 'react-process-string'
 import { URL_REGEX } from '../../constants/regex'
 import { 
   Container,
+  ActiveContainer,
   Header,
   Body,
   StyledA,
@@ -14,7 +16,9 @@ import {
 
 dayjs.extend(relativeTime)
 
-export const PostCard = ({ post, className, first }) => {
+export const PostCard = ({ post, className, first, active }) => {
+  const router = useRouter()
+
   const displayCreatedAt = () => {
     const createdAt = dayjs(post.created_at)
     const isToday = createdAt.add(23, 'hour').isAfter(dayjs())
@@ -27,7 +31,7 @@ export const PostCard = ({ post, className, first }) => {
       {
         regex: URL_REGEX,
         fn: (key, result) => (
-          <StyledA key={key} href={result[0]}>
+          <StyledA key={key} href={result[0]} target={'_blank'}>
             {result[0]}
           </StyledA>
         )
@@ -35,7 +39,23 @@ export const PostCard = ({ post, className, first }) => {
       {
         regex: />>(\d{1,4})/,
         fn: (key, result) => (
-          <PostLink key={key}>↑{Number(result[1])}</PostLink>
+          <PostLink 
+            key={key} 
+            onClick={() => linkToPost(result[1])}
+          >
+            ↑{Number(result[1])}
+          </PostLink>
+        )
+      },
+      {
+        regex: />>>(\/[^\/]+\/\d+(\/\d{1,4})?)/,
+        fn: (key, result) => (
+          <PostLink 
+            key={key}
+            onClick={() => linkToOtherTopicPost(result[1])}
+          >
+            →{result[1]}
+          </PostLink>
         )
       }
     ]
@@ -43,9 +63,30 @@ export const PostCard = ({ post, className, first }) => {
     return processString(config)(text)
   }
 
+  const linkToPost = (number) => {
+    const asPath = router.asPath.replace(/($|&activePost=[^&]*)/, `&activePost=${number}`)
+    router.push(router.route, asPath, { scroll: false })
+  }
+
+  const linkToOtherTopicPost = (path) => {
+    const regex = /\/([^\/]+)\/(\d+)(\/(\d{1,4}))?/
+    const matched = path.match(regex)
+    if (!matched) {
+      return
+    }
+
+    const [, board, topic, , post] = matched
+    const url = `/boards/topics?board=${board}&topic=${topic}&${post ? `activePost=${post}` : 'recent=true'}`
+    router.push(url)
+  }
+
+  const ContainerComponent = active ? ActiveContainer : Container
+
   return (
-    <Container className={className}>
-      {/* {parseTime(post.created_at)} */}
+    <ContainerComponent 
+      id={`post_${post.number}`}
+      className={className} 
+    >
       <Header>
         {!first && (
           <>
@@ -59,6 +100,6 @@ export const PostCard = ({ post, className, first }) => {
       <Body>
         {formatPostBody(post.body)}
       </Body>
-    </Container>
+    </ContainerComponent>
   )
 }
