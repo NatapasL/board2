@@ -90,6 +90,7 @@ export const PostCard = ({ post, className, first, active }) => {
       className={className} 
     >
       <Header>
+        
         {!first && (
           <>
             <PostNumber>{post.number}</PostNumber>
@@ -98,13 +99,12 @@ export const PostCard = ({ post, className, first, active }) => {
           </>
         )}
         {displayCreatedAt()}
+        &nbsp;&nbsp;❯&nbsp;&nbsp;
+        <BlockButton userId={post.ident} />
       </Header>
       <Body>
         {formatPostBody(post.body)}
       </Body>
-      <Footer>
-        <BlockButton userId={post.ident} />
-      </Footer>
     </ContainerComponent>
   )
 }

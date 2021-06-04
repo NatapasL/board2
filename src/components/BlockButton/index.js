@@ -11,7 +11,7 @@ export const BlockButton = observer(({ userId }) => {
   const { blockStore } = useContext(storesContext)
 
   const onClick = () => {
-    if (confirm(`Block user ${userId}?`)) {
+    if (confirm(`Block user "${userId}"?`)) {
       blockStore.addToList(TYPE_USER, userId)
     }
   }

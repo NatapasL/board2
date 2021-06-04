@@ -49,7 +49,3 @@ export const PostLink = styled(StyledA)`
   font-size: 14px;
   font-weight: 500;
 `
-
-export const Footer = styled.div`
-
-`
