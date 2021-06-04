@@ -38,6 +38,7 @@ export const Body = styled.div`
   white-space: pre-wrap;
   word-break: break-all;
   font-size: 16px;
+  margin-bottom: 8px;
 `
 
 export const StyledA = styled.a`
@@ -47,4 +48,8 @@ export const StyledA = styled.a`
 export const PostLink = styled(StyledA)`
   font-size: 14px;
   font-weight: 500;
+`
+
+export const Footer = styled.div`
+
 `

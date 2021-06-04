@@ -19,7 +19,7 @@ export const TopicPage = observer(({ posts, isRecent }) => {
   const router = useRouter()
   const [activePostNumber, setActivePostNumber] = useState(-1)
   
-  const { topicStore, boardStore } = useContext(storesContext)
+  const { topicStore, boardStore, blockStore } = useContext(storesContext)
   const topic = topicStore.currentTopic
   const board = boardStore.currentBoard
 
@@ -60,9 +60,14 @@ export const TopicPage = observer(({ posts, isRecent }) => {
     }, 2000)
   }
 
+  const filteredPosts = useMemo(() => {
+    let result = isRecent ? posts : posts.filter(post => Number(post.number) > 1)
+    result = result.filter(post => !blockStore.userIds.includes(post.ident))
+    
+    return result 
+  }, [isRecent, JSON.stringify(posts || []), JSON.stringify(blockStore.userIds)])
+  
   if (!topic || !board) return <div />
-
-  const filteredPosts = isRecent ? posts : posts.filter(post => Number(post.number) > 1)
 
   const renderSeeAllButton = (center) => {
     if (!isRecent) return <div />

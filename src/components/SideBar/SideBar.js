@@ -10,7 +10,8 @@ import {
   ItemLeftText,
   ItemRightText,
   LinkButton,
-  SelectBar
+  SelectBar,
+  BlockManagementButton
 } from './styled'
 
 export const SideBar = observer(({ active, onUpdateActive }) => {
@@ -28,6 +29,7 @@ export const SideBar = observer(({ active, onUpdateActive }) => {
     <Container active={active}>
       <SelectBar>
         Select Board
+        <BlockManagementButton>❯ BLOCK MANAGEMENT</BlockManagementButton>
       </SelectBar>
       <ListContainer>
         {boardStore.boardList.map(board => (

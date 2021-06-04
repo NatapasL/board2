@@ -4,6 +4,7 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 import processString from 'react-process-string'
 
 import { URL_REGEX } from '../../constants/regex'
+import { BlockButton } from '../BlockButton'
 import { 
   Container,
   ActiveContainer,
@@ -11,7 +12,8 @@ import {
   Body,
   StyledA,
   PostLink,
-  PostNumber
+  PostNumber,
+  Footer
 } from './styled'
 
 dayjs.extend(relativeTime)
@@ -100,6 +102,9 @@ export const PostCard = ({ post, className, first, active }) => {
       <Body>
         {formatPostBody(post.body)}
       </Body>
+      <Footer>
+        <BlockButton userId={post.ident} />
+      </Footer>
     </ContainerComponent>
   )
 }

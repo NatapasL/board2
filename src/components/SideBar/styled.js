@@ -92,4 +92,13 @@ export const SelectBar = styled.div`
   font-weight: 600;
   padding: 4px 8px;
   margin: 4px 16px 4px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+export const BlockManagementButton = styled.a`
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: ${colors.black4};
 `
