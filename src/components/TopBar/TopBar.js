@@ -70,7 +70,7 @@ export const TopBar = observer(({ onMenuButtonClick }) => {
       </LeftContainer>
       {!currentTopic && (
         <div>
-          Sui-chan wa kyou mou kawaii!
+          Kyou mou kawaii!
         </div>
       )}
       <RightContainer>
