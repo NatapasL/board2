@@ -14,8 +14,10 @@ export const Layout = ({ children }) => {
   useEffect(() => {
     if (router.route === '/') {
       setSideBarActive(true)
+    } else {
+      setSideBarActive(false)
     }
-  }, [router.route])
+  }, [router.asPath])
 
   return (
     <>
