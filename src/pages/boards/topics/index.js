@@ -15,6 +15,7 @@ export default observer(() => {
   const { posts } = postStore
 
   const fetchData = (topic, recent) => {
+    postStore.setPosts([])
     showSpinner()
 
     if (recent) {

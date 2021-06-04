@@ -15,6 +15,7 @@ export default observer(() => {
   const { topics } = topicStore
 
   const fetchData = (board, all) => {
+    topicStore.setTopics([])
     showSpinner()
 
     if (all) {
