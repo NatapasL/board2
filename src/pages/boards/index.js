@@ -33,6 +33,10 @@ export default observer(() => {
   }
 
   useEffect(() => {
+    topicStore.setTopics([])
+  }, [])
+
+  useEffect(() => {
     if (!window) return
 
     const { board, all } = router.query

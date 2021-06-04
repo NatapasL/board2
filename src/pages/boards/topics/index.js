@@ -33,6 +33,10 @@ export default observer(() => {
   }
 
   useEffect(() => {
+    postStore.setPosts([])
+  }, [])
+
+  useEffect(() => {
     if (!window) return
 
     const { topic, recent } = router.query
