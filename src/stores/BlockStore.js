@@ -13,6 +13,13 @@ class BlockStore {
     this.updateLocalStorage()
   }
 
+  @action
+  deleteFromList(type, id) {
+    const key = this.generateKey(type, id)
+    delete this.blockedList[key]
+    this.updateLocalStorage()
+  }
+
   @computed
   get userIds() {
     const ids = []

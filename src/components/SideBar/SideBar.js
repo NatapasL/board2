@@ -29,7 +29,7 @@ export const SideBar = observer(({ active, onUpdateActive }) => {
     <Container active={active}>
       <SelectBar>
         Select Board
-        <BlockManagementButton>❯ BLOCK MANAGEMENT</BlockManagementButton>
+        <BlockManagementButton href={'/blocks'}>❯ BLOCK MANAGEMENT</BlockManagementButton>
       </SelectBar>
       <ListContainer>
         {boardStore.boardList.map(board => (
