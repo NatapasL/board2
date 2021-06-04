@@ -9,11 +9,13 @@ export const Container = styled.div`
   top: 40px;
   right: 0;
   background-color: ${colors.grey};
-  overflow: hidden;
+  overflow: scroll;
+  scroll-behavior: smooth;
   transition: width 250ms;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-top: 1px dashed ${colors.white};
 `
 
 export const TitleContainer = styled.div`
@@ -46,8 +48,7 @@ export const ListContainer = styled.div`
   padding-bottom: 16px;
   width: 100%;
   height: 100%;
-  overflow: scroll;
-  scroll-behavior: smooth;
+  margin-bottom: 75px;
 `
 
 export const ItemContainer = styled.a`
@@ -87,8 +88,8 @@ export const LinkButton = styled.div`
 
 export const SelectBar = styled.div`
   width: calc(100% - 32px);
-  background-color: white;
-  font-weight: 300;
+  /* background-color: white; */
+  font-weight: 600;
   padding: 4px 8px;
-  margin: 0 16px 8px 16px;
+  margin: 4px 16px 4px 16px;
 `
