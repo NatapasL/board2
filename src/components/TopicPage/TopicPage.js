@@ -57,7 +57,7 @@ export const TopicPage = observer(({ posts, isRecent }) => {
     setTimeout(() => {
       const asPath = router.asPath.replace(/&activePost=[^&]*/, '')
       router.replace(router.route, asPath, { scroll: false })
-    }, 3000)
+    }, 2000)
   }
 
   if (!topic || !board) return <div />

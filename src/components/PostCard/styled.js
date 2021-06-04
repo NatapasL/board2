@@ -7,8 +7,8 @@ const highlight = keyframes`
   0%, 100% {
     background-color: ${colors.white};
   }
-  50% {
-    background-color: ${colors.grey};
+  10% {
+    background-color: ${colors.highlight};
   }
 `
 
@@ -18,7 +18,7 @@ export const Container = styled.div`
 `
 
 export const ActiveContainer = styled(Container)`
-  animation: ${highlight} 1.5s 2;
+  animation: ${highlight} 2s;
 `
 
 export const Header = styled.div`

@@ -27,4 +27,5 @@ export const colors = {
   black5: '#6e7881',
   grey: '#EDEFF1',
   link: '#0079D3',
+  highlight: '#AFC9CF'
 }
