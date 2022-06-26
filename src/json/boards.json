@@ -210,6 +210,22 @@
   },
   {
     "type": "board",
+    "id": 18,
+    "description": "บอร์ดพูดคุยในประเด็นเกี่ยวกับ VTuber และหัวข้อที่เกี่ยวข้อง",
+    "settings": {
+      "name": "Nameless Fanboi",
+      "use_ident": true,
+      "max_posts": 1000,
+      "post_delay": 10,
+      "expire_duration": 0
+    },
+    "slug": "vtuber",
+    "status": "open",
+    "title": "VTuber",
+    "path": "/api/1.0/boards/vtuber/"
+  },
+  {
+    "type": "board",
     "id": 4,
     "description": "บอร์ดสำหรับพูดคุยเรื่องเทคโนโลยี ซอฟท์แวร์ ฮาร์ดแวร์ แกดเจ็ตต่างๆ",
     "settings": {
