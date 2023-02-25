@@ -38,6 +38,19 @@ export const PostCard = ({
   const formatPostBody = (text: string): string => {
     const config = [
       {
+        regex: /https:\/\/fanboi\.ch(\/([^/]*)(\/((\d+)(\/(\d+))?))?)\/?/,
+        fn: (key: string, result: string[]) =>{
+          return (
+            <PostLink
+              key={key}
+              onClick={(): void => linkToOtherTopicPost(result[1])}
+            >
+              →{result[1]}
+            </PostLink>
+          );
+        }
+      },
+      {
         regex: URL_REGEX,
         fn: (key: string, result: string[]) => (
           <StyledA key={key} href={result[0]} target={'_blank'}>
@@ -66,7 +79,8 @@ export const PostCard = ({
             →{result[1]}
           </PostLink>
         )
-      }
+      },
+
     ];
 
     return processString(config)(text);
@@ -85,7 +99,7 @@ export const PostCard = ({
     }
 
     const [, board, topic, , post] = matched;
-    const url = `/boards/topics?board=${board}&topic=${topic}&${post ? `activePost=${post}` : 'recent=true'}`;
+    const url = `/boards/topics?board=${board}${topic ? `&topic=${topic}` : ''}&${post ? `activePost=${post}` : 'recent=true'}`;
     router.push(url);
   };
 
