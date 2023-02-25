@@ -32,7 +32,7 @@ export const Title = styled.h1`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px; 
+  margin-bottom: 16px;
   font-size: 28px;
   font-weight: 600;
   margin: 0;
@@ -44,7 +44,7 @@ export const ListContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-end;
+  align-items: stretch;
   padding-bottom: 16px;
   width: 100%;
   height: 100%;
