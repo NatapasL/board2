@@ -5,3 +5,4 @@ yarn-error.log
 .env
 next-env.d.ts
 .nvmrc
+.vercel
