@@ -24,6 +24,11 @@ export const Title = styled.div`
 
 export const HeaderContent = styled.div`
   font-size: 14px;
+  font-weight: 400;
+
+  b {
+    font-weight: 600;
+  }
 `;
 
 export const ButtonContainer = styled.div`
