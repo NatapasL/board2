@@ -4,7 +4,11 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "ES2017",
+      "ES2020",
+      "ES2021",
+      "ES2022"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -23,7 +27,8 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "experimentalDecorators": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "jsxImportSource": "@emotion/react"
   },
   "include": [
     "next-env.d.ts",
