@@ -1,9 +1,9 @@
-import { useContext } from 'react'
-import { observer } from 'mobx-react-lite'
+import { observer } from 'mobx-react-lite';
+import { useContext } from 'react';
 
-import { storesContext } from 'src/contexts/storesContext';
-import { Layout } from 'src/components/Layout'
+import { Layout } from 'src/components/Layout';
 import { TYPE_USER } from 'src/constants/blockedStore';
+import { storesContext } from 'src/contexts/storesContext';
 
 export default observer(() => {
   const { blockStore } = useContext(storesContext)
@@ -14,7 +14,7 @@ export default observer(() => {
 
   const { blockedList } = blockStore
 
-  const unblock = (id) => {
+  const unblock = (id: string): void => {
     blockStore.deleteFromList(TYPE_USER, id)
   }
 
@@ -36,7 +36,7 @@ export default observer(() => {
               <td>{blockedList[key].type}</td>
               <td>{new Date(blockedList[key].createdAt).toLocaleString()}</td>
               <td>
-                <button onClick={() => unblock(blockedList[key].id)}>
+                <button onClick={(): void => unblock(blockedList[key].id)}>
                   UNBLOCK
                 </button>
               </td>
