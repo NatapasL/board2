@@ -1,7 +1,7 @@
 import { Global } from '@emotion/core';
 import { useRouter } from 'next/router';
 import {
- ReactElement, useContext, useEffect 
+  ReactElement, useContext, useEffect
 } from 'react';
 
 import { AppProps } from 'next/app';
@@ -29,11 +29,7 @@ const App =  ({ Component, pageProps }: AppProps): ReactElement => {
   return (
     <>
       <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Athiti:wght@300;400;600&display=swap"
-          rel="stylesheet"
-        />
-        <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet"></link>
       </Head>
       <Global styles={globalStyle} />
       <Component {...pageProps} />

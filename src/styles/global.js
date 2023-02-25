@@ -7,6 +7,7 @@ export const globalStyle = css`
     font-family: 'Sarabun', sans-serif;
     line-height: 1.35;
     color: ${colors.black2};
+    font-weight: 300;
   }
 
   html {

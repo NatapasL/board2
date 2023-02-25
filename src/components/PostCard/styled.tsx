@@ -29,7 +29,7 @@ export const Header = styled.div`
 `;
 
 export const PostNumber = styled.span`
-  font-weight: 600;
+  font-weight: 500;
   font-size: 11px;
   color: ${colors.black5};
 `;
@@ -47,5 +47,5 @@ export const StyledA = styled.a`
 
 export const PostLink = styled(StyledA)`
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
 `;

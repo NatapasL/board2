@@ -15,7 +15,7 @@ export const Header = styled.div`
 `;
 
 export const Title = styled.div`
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 4px;
 `;
 
@@ -23,6 +23,6 @@ export const Footer = styled.div`
   font-size: 12px;
 
   b {
-    font-weight: 600;
+    font-weight: 500;
   }
 `;
