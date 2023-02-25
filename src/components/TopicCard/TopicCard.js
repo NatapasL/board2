@@ -1,31 +1,28 @@
-import { forwardRef, useContext } from 'react';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { forwardRef } from 'react';
 
 import {
-  Container, 
-  Title,
-  Header,
-  Footer
+  Container, Footer, Header, Title
 } from './styled';
 
 dayjs.extend(relativeTime);
 
 export const TopicCard = forwardRef(({
- topic, href, onClick, className 
+ topic, href, onClick, className
 }, ref) => {
-  const displayHref = href.replace(/\?.*/, '').replace(/^\//, '');
+  const displayHref = href?.replace(/\?.*/, '').replace(/^\//, '');
   const timeDiff = dayjs(topic.posted_at).fromNow();
 
   return (
-    <Container 
-      href={href} 
-      onClick={onClick} 
-      ref={ref} 
+    <Container
+      href={href}
+      onClick={onClick}
+      ref={ref}
       className={className}
     >
       <Header>
-        {displayHref} • {timeDiff}
+        {topic.id} • {timeDiff}
       </Header>
       <Title>
         {topic.title}

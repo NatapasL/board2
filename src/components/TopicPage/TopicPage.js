@@ -1,28 +1,23 @@
-import {
- useContext, useEffect, useState, useMemo 
-} from 'react';
-import { useRouter } from 'next/router';
 import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import {
+  useContext, useEffect, useMemo, useState
+} from 'react';
 
 import { storesContext } from '../../contexts/storesContext';
-import { 
-  Header,
-  Title,
-  FirstPostCard,
-  ButtonContainer,
-  FilterContainer,
-  Body,
-  StyledPostCard,
-} from './styled';
 import { Button } from '../Button';
+import {
+  Body, ButtonContainer,
+  FilterContainer, FirstPostCard, Header, StyledPostCard, Title
+} from './styled';
 
 export const TopicPage = observer(({ posts, isRecent }) => {
   const router = useRouter();
   const [activePostNumber, setActivePostNumber] = useState(-1);
-  
+
   const {
- topicStore, boardStore, blockStore 
+ topicStore, boardStore, blockStore
 } = useContext(storesContext);
   const topic = topicStore.currentTopic;
   const board = boardStore.currentBoard;
@@ -40,14 +35,14 @@ export const TopicPage = observer(({ posts, isRecent }) => {
 
   useEffect(() => {
     if (activePostNumber === -1) {
-      return null;
+      return undefined;
     }
 
     if (!postNumbers.includes(activePostNumber)) {
       const asPath = router.asPath.replace(/&recent=[^&]*/, '');
       router.replace(asPath, asPath, { scroll: false });
     }
-    
+
     scrollToPost();
   }, [activePostNumber, JSON.stringify(posts)]);
 
@@ -67,10 +62,10 @@ export const TopicPage = observer(({ posts, isRecent }) => {
   const filteredPosts = useMemo(() => {
     let result = isRecent ? posts : posts.filter(post => Number(post.number) > 1);
     result = result.filter(post => !blockStore.userIds.includes(post.ident));
-    
-    return result; 
+
+    return result;
   }, [isRecent, JSON.stringify(posts || []), JSON.stringify(blockStore.userIds)]);
-  
+
   if (!topic || !board) return <div />;
 
   const renderSeeAllButton = (center) => {
@@ -107,11 +102,11 @@ export const TopicPage = observer(({ posts, isRecent }) => {
         { isRecent ? 'LATEST POSTS' : 'ALL POSTS' }
       </FilterContainer>
       <Body>
-        {filteredPosts.map(post => 
-          <StyledPostCard 
-            key={post.id} 
-            post={post} 
-            active={post.number === activePostNumber} 
+        {filteredPosts.map(post =>
+          <StyledPostCard
+            key={post.id}
+            post={post}
+            active={post.number === activePostNumber}
           />
         )}
         {renderSeeAllButton(true)}

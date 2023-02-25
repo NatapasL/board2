@@ -1,14 +1,14 @@
-import {
- useEffect, useContext, useState 
-} from 'react';
 import { observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
+import {
+  useContext, useEffect, useState
+} from 'react';
 
-import { storesContext } from 'src/contexts/storesContext';
+import { getAllPosts, getRecentPosts } from 'src/api/postApi';
 import { Layout } from 'src/components/Layout';
+import { hideSpinner, showSpinner } from 'src/components/Spinner';
 import { TopicPage } from 'src/components/TopicPage';
-import { getRecentPosts, getAllPosts } from 'src/api/postApi';
-import { showSpinner, hideSpinner } from 'src/components/Spinner';
+import { storesContext } from 'src/contexts/storesContext';
 
 export default observer(() => {
   const router = useRouter();
