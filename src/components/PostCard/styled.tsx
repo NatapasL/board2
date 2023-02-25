@@ -1,7 +1,7 @@
-import styled from '@emotion/styled'
-import { keyframes } from '@emotion/core'
+import { keyframes } from '@emotion/core';
+import styled from '@emotion/styled';
 
-import { colors } from '../../styles/variables'
+import { colors } from '../../styles/variables';
 
 const highlight = keyframes`
   0%, 100% {
