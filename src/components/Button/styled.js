@@ -1,10 +1,10 @@
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
-import { colors } from '../../styles/variables'
+import { colors } from '../../styles/variables';
 
 export const StyledButton = styled.button`
   outline: none;
-`
+`;
 
 export const ButtonSeeAll = styled(StyledButton)`
   display: inline-flex;
@@ -20,4 +20,4 @@ export const ButtonSeeAll = styled(StyledButton)`
   height: 28px;
   border-radius: 4px;
   border: none;
-`
+`;

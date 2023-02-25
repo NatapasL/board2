@@ -1,13 +1,13 @@
-import styled from '@emotion/styled'
-import { mq } from '../../styles/variables'
+import styled from '@emotion/styled';
+import { mq } from '../../styles/variables';
 
 export const Container = styled.span`
   position: relative;
-`
+`;
 
 export const LinkContainer = styled.a`
   
-`
+`;
 
 export const PopupContainer = styled.div`
   position: absolute;
@@ -27,4 +27,4 @@ export const PopupContainer = styled.div`
   ${mq.lg} {
     max-width: calc(980px - 100px);
   }
-`
+`;

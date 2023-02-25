@@ -6,17 +6,17 @@ import { TYPE_USER } from 'src/constants/blockedStore';
 import { storesContext } from 'src/contexts/storesContext';
 
 export default observer(() => {
-  const { blockStore } = useContext(storesContext)
+  const { blockStore } = useContext(storesContext);
 
   if (typeof window === "undefined") {
-    return <Layout><div /></Layout>
+    return <Layout><div /></Layout>;
   }
 
-  const { blockedList } = blockStore
+  const { blockedList } = blockStore;
 
   const unblock = (id: string): void => {
-    blockStore.deleteFromList(TYPE_USER, id)
-  }
+    blockStore.deleteFromList(TYPE_USER, id);
+  };
 
   return (
     <Layout>
@@ -45,5 +45,5 @@ export default observer(() => {
         </tbody>
       </table>
     </Layout>
-  )
-})
+  );
+});

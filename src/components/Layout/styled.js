@@ -1,6 +1,6 @@
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
-import { mq, colors } from '../../styles/variables'
+import { mq, colors } from '../../styles/variables';
 
 export const Container = styled.div`
   margin-left: auto;
@@ -18,9 +18,9 @@ export const Container = styled.div`
   ${mq.lg} {
     max-width: 980px
   }
-`
+`;
 
 export const Background = styled.div`
   background-color: ${colors.grey};
   padding-bottom: 16px;
-`
+`;

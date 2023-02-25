@@ -1,7 +1,7 @@
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
-import { colors } from 'src/styles/variables'
-import { transform } from 'lodash'
+import { colors } from 'src/styles/variables';
+import { transform } from 'lodash';
 
 export const Container = styled.div`
   position: fixed;
@@ -15,7 +15,7 @@ export const Container = styled.div`
   display: flex;
 
   transition: transform 250ms linear;
-`
+`;
 
 export const ArrowContainer = styled.a`
   padding: 4px 12px;
@@ -27,4 +27,4 @@ export const ArrowContainer = styled.a`
   &:first-of-type {
     border-right: 1px solid rgba(110, 120, 129, 0.35);
   }
-`
+`;

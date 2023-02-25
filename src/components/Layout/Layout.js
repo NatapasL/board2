@@ -1,23 +1,23 @@
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-import { Container, Background } from './styled'
-import { SideBar } from '../SideBar'
-import { TopBar } from '../TopBar'
-import { Spinner } from 'src/components/Spinner'
-import { ScrollButton } from 'src/components/ScrollButton'
+import { Container, Background } from './styled';
+import { SideBar } from '../SideBar';
+import { TopBar } from '../TopBar';
+import { Spinner } from 'src/components/Spinner';
+import { ScrollButton } from 'src/components/ScrollButton';
 
 export const Layout = ({ children }) => {
-  const router = useRouter()
-  const [sideBarActive, setSideBarActive] = useState(false)
+  const router = useRouter();
+  const [sideBarActive, setSideBarActive] = useState(false);
 
   useEffect(() => {
     if (router.route === '/') {
-      setSideBarActive(true)
+      setSideBarActive(true);
     } else {
-      setSideBarActive(false)
+      setSideBarActive(false);
     }
-  }, [router.asPath])
+  }, [router.asPath]);
 
   return (
     <>
@@ -31,5 +31,5 @@ export const Layout = ({ children }) => {
       <ScrollButton active={!sideBarActive} />
       <Spinner />
     </>
-  )
-}
+  );
+};

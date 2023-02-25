@@ -1,7 +1,7 @@
 import { 
   Container,
   ArrowContainer,
-} from './styled'
+} from './styled';
 
 export const ScrollButton = ({ active }) => {
   return (
@@ -9,5 +9,5 @@ export const ScrollButton = ({ active }) => {
       <ArrowContainer href="#top">↑</ArrowContainer>
       <ArrowContainer href="#bottom">↓</ArrowContainer>
     </Container>
-  )
-}
+  );
+};

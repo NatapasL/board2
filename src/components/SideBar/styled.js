@@ -1,6 +1,6 @@
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
-import { colors } from '../../styles/variables'
+import { colors } from '../../styles/variables';
 
 export const Container = styled.div`
   position: fixed;
@@ -16,7 +16,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   border-top: 1px dashed ${colors.white};
-`
+`;
 
 export const TitleContainer = styled.div`
   background-color: ${colors.white};
@@ -26,7 +26,7 @@ export const TitleContainer = styled.div`
   align-items: center;
   padding: 8px 0;
   margin-bottom: 4px;
-`
+`;
 
 export const Title = styled.h1`
   display: flex;
@@ -38,7 +38,7 @@ export const Title = styled.h1`
   margin: 0;
   padding: 0;
   white-space: nowrap;
-`
+`;
 
 export const ListContainer = styled.div`
   display: flex;
@@ -49,7 +49,7 @@ export const ListContainer = styled.div`
   width: 100%;
   height: 100%;
   margin-bottom: 75px;
-`
+`;
 
 export const ItemContainer = styled.a`
   background-color: ${colors.white};
@@ -58,7 +58,7 @@ export const ItemContainer = styled.a`
   justify-content: space-between;
   white-space: nowrap;
   width: 100%;
-`
+`;
 
 export const ItemLeftText = styled.div`
   font-weight: bold;
@@ -66,7 +66,7 @@ export const ItemLeftText = styled.div`
   padding: 8px 8px 8px 20px;
   flex-grow: 1;
   overflow: hidden;
-`
+`;
 
 export const ItemRightText = styled.div`
   display: flex;
@@ -76,7 +76,7 @@ export const ItemRightText = styled.div`
   justify-content: flex-end;
   padding-right: 16px;
   padding-left: 8px;
-`
+`;
 
 export const LinkButton = styled.div`
   font-size: 12px;
@@ -84,7 +84,7 @@ export const LinkButton = styled.div`
   padding: 4px 8px;
   border-radius: 0 0 4px 4px;
   font-weight: bold;
-`
+`;
 
 export const SelectBar = styled.div`
   width: calc(100% - 32px);
@@ -95,10 +95,10 @@ export const SelectBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`
+`;
 
 export const BlockManagementButton = styled.a`
   font-size: 10px;
   font-family: Arial, Helvetica, sans-serif;
   color: ${colors.black4};
-`
+`;

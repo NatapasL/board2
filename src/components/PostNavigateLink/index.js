@@ -1,1 +1,1 @@
-export * from './PostNavigateLink'
+export * from './PostNavigateLink';

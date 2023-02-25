@@ -1,6 +1,6 @@
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
-import { zIndex, colors } from 'src/styles/variables'
+import { zIndex, colors } from 'src/styles/variables';
 
 export const Backdrop = styled.div`
   width: 100vw;
@@ -13,7 +13,7 @@ export const Backdrop = styled.div`
   display: ${props => props.active ? 'flex' : 'none'};
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const Container = styled.div`
   width: 100%;
@@ -26,7 +26,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`
+`;
 
 export const SpinnerAnimation = styled.div`
   width: 50px;
@@ -40,11 +40,10 @@ export const SpinnerAnimation = styled.div`
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
-`
+`;
 
 export const Text = styled.div`
   margin-top: 8px;
   font-size: 14px;
-`
-
+`;
 

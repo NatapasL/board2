@@ -1,1 +1,1 @@
-export * from './fetchApi.js'
+export * from './fetchApi.js';

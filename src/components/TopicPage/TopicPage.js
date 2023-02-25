@@ -1,9 +1,11 @@
-import { useContext, useEffect, useState, useMemo } from 'react'
-import { useRouter } from 'next/router'
-import { observer } from 'mobx-react-lite'
-import Link from 'next/link'
+import {
+ useContext, useEffect, useState, useMemo 
+} from 'react';
+import { useRouter } from 'next/router';
+import { observer } from 'mobx-react-lite';
+import Link from 'next/link';
 
-import { storesContext } from '../../contexts/storesContext'
+import { storesContext } from '../../contexts/storesContext';
 import { 
   Header,
   Title,
@@ -12,65 +14,67 @@ import {
   FilterContainer,
   Body,
   StyledPostCard,
-} from './styled'
-import { Button } from '../Button'
+} from './styled';
+import { Button } from '../Button';
 
 export const TopicPage = observer(({ posts, isRecent }) => {
-  const router = useRouter()
-  const [activePostNumber, setActivePostNumber] = useState(-1)
+  const router = useRouter();
+  const [activePostNumber, setActivePostNumber] = useState(-1);
   
-  const { topicStore, boardStore, blockStore } = useContext(storesContext)
-  const topic = topicStore.currentTopic
-  const board = boardStore.currentBoard
+  const {
+ topicStore, boardStore, blockStore 
+} = useContext(storesContext);
+  const topic = topicStore.currentTopic;
+  const board = boardStore.currentBoard;
 
-  const postNumbers = useMemo(() => posts.map(post => post.number), [JSON.stringify(posts)])
+  const postNumbers = useMemo(() => posts.map(post => post.number), [JSON.stringify(posts)]);
 
   useEffect(() => {
-    const s = router.asPath.match(/activePost=(\d{1,4})/)
+    const s = router.asPath.match(/activePost=(\d{1,4})/);
     if (s?.[1] ?? false) {
-      setActivePostNumber(Number(s[1]))
+      setActivePostNumber(Number(s[1]));
     } else {
-      setActivePostNumber(-1)
+      setActivePostNumber(-1);
     }
-  }, [router.asPath])
+  }, [router.asPath]);
 
   useEffect(() => {
     if (activePostNumber === -1) {
-      return null
+      return null;
     }
 
     if (!postNumbers.includes(activePostNumber)) {
-      const asPath = router.asPath.replace(/&recent=[^&]*/, '')
-      router.replace(asPath, asPath, { scroll: false })
+      const asPath = router.asPath.replace(/&recent=[^&]*/, '');
+      router.replace(asPath, asPath, { scroll: false });
     }
     
-    scrollToPost()
-  }, [activePostNumber, JSON.stringify(posts)])
+    scrollToPost();
+  }, [activePostNumber, JSON.stringify(posts)]);
 
   const scrollToPost = () => {
-    const el = document.getElementById(`post_${activePostNumber}`)
+    const el = document.getElementById(`post_${activePostNumber}`);
     if (!el) {
-      return null
+      return null;
     }
-    el.scrollIntoView({ block: 'center' })
+    el.scrollIntoView({ block: 'center' });
 
     setTimeout(() => {
-      const asPath = router.asPath.replace(/&activePost=[^&]*/, '')
-      router.replace(router.route, asPath, { scroll: false })
-    }, 2000)
-  }
+      const asPath = router.asPath.replace(/&activePost=[^&]*/, '');
+      router.replace(router.route, asPath, { scroll: false });
+    }, 2000);
+  };
 
   const filteredPosts = useMemo(() => {
-    let result = isRecent ? posts : posts.filter(post => Number(post.number) > 1)
-    result = result.filter(post => !blockStore.userIds.includes(post.ident))
+    let result = isRecent ? posts : posts.filter(post => Number(post.number) > 1);
+    result = result.filter(post => !blockStore.userIds.includes(post.ident));
     
-    return result 
-  }, [isRecent, JSON.stringify(posts || []), JSON.stringify(blockStore.userIds)])
+    return result; 
+  }, [isRecent, JSON.stringify(posts || []), JSON.stringify(blockStore.userIds)]);
   
-  if (!topic || !board) return <div />
+  if (!topic || !board) return <div />;
 
   const renderSeeAllButton = (center) => {
-    if (!isRecent) return <div />
+    if (!isRecent) return <div />;
 
     return (
       <ButtonContainer center={center}>
@@ -80,17 +84,17 @@ export const TopicPage = observer(({ posts, isRecent }) => {
           </Button>
         </Link>
       </ButtonContainer>
-    )
-  }
+    );
+  };
 
   const renderFirstPost = () => {
-    const firstPost = posts.find(post => Number(post.number) === 1)
-    if (!firstPost) return <div />
+    const firstPost = posts.find(post => Number(post.number) === 1);
+    if (!firstPost) return <div />;
 
     return (
       <FirstPostCard post={firstPost} first />
-    )
-  }
+    );
+  };
 
   return (
     <>
@@ -113,5 +117,5 @@ export const TopicPage = observer(({ posts, isRecent }) => {
         {renderSeeAllButton(true)}
       </Body>
     </>
-  )
-})
+  );
+});

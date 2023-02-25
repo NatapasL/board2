@@ -1,12 +1,12 @@
-import reduct from 'lodash/reduce'
+import reduct from 'lodash/reduce';
 
-import { BREAKPOINTS } from '../constants/styles'
+import { BREAKPOINTS } from '../constants/styles';
 
 export const mq = reduct(BREAKPOINTS, (hash, val, key) => {
-  hash[key] = `@media (min-width: ${val}px)`
+  hash[key] = `@media (min-width: ${val}px)`;
 
-  return hash
-}, {})
+  return hash;
+}, {});
 
 export const zIndex = {
   10: 10,
@@ -15,7 +15,7 @@ export const zIndex = {
   40: 40,
   50: 50,
   9999: 9999
-}
+};
 
 export const colors = {
   white: '#fff',
@@ -28,4 +28,4 @@ export const colors = {
   grey: '#EDEFF1',
   link: '#0079D3',
   highlight: '#AFC9CF'
-}
+};

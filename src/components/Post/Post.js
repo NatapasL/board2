@@ -1,17 +1,17 @@
-import dayjs from 'dayjs'
-import processString from 'react-process-string'
+import dayjs from 'dayjs';
+import processString from 'react-process-string';
 
-import { URL_REGEX } from '../../constants/regex'
+import { URL_REGEX } from '../../constants/regex';
 import { 
   PostContainer,
   PostInfoContainer,
   PostBodyContainer,
   IdentityInfo,
-} from './styled'
-import { PostNavigateLink } from '../PostNavigateLink'
+} from './styled';
+import { PostNavigateLink } from '../PostNavigateLink';
 
 export const Post = ({ post }) => {
-  const parseTime = (time) => dayjs(time).format('DD/MM/YYYY HH:mm:ss')
+  const parseTime = (time) => dayjs(time).format('DD/MM/YYYY HH:mm:ss');
 
   const formatPostBody = (text) => {
     const config = [
@@ -32,10 +32,10 @@ export const Post = ({ post }) => {
           />
         )
       }
-    ]
+    ];
 
-    return processString(config)(text)
-  }
+    return processString(config)(text);
+  };
 
   return (
     <PostContainer id={post.number}>
@@ -56,5 +56,5 @@ export const Post = ({ post }) => {
         {formatPostBody(post.body)}
       </PostBodyContainer>
     </PostContainer>
-  )
-}
+  );
+};

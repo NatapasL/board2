@@ -1,8 +1,8 @@
-import { useContext, useEffect } from 'react'
-import { observer } from 'mobx-react-lite'
-import Link from 'next/link'
+import { useContext, useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
+import Link from 'next/link';
 
-import { storesContext } from '../../contexts/storesContext'
+import { storesContext } from '../../contexts/storesContext';
 import {
   Container,
   ItemContainer,
@@ -12,17 +12,17 @@ import {
   LinkButton,
   SelectBar,
   BlockManagementButton
-} from './styled'
+} from './styled';
 
 export const SideBar = observer(({ active, onUpdateActive }) => {
-  const { boardStore } = useContext(storesContext)
+  const { boardStore } = useContext(storesContext);
 
   useEffect(() => {
-    boardStore.fetchBoardList()
-  }, [])
+    boardStore.fetchBoardList();
+  }, []);
 
   if (!boardStore.boardList.length) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   return (
@@ -48,7 +48,7 @@ export const SideBar = observer(({ active, onUpdateActive }) => {
         ))}
       </ListContainer>
     </Container>
-  )
-})
+  );
+});
 
-export default SideBar
+export default SideBar;

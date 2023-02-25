@@ -1,6 +1,6 @@
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
-import { colors } from 'src/styles/variables'
+import { colors } from 'src/styles/variables';
 
 export const Button = styled.div`
   font-weight: 500;
@@ -10,4 +10,4 @@ export const Button = styled.div`
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 4px;
-`
+`;

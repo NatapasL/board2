@@ -1,8 +1,8 @@
-import { useContext } from 'react'
-import Link from 'next/link'
-import { observer } from 'mobx-react-lite'
+import { useContext } from 'react';
+import Link from 'next/link';
+import { observer } from 'mobx-react-lite';
 
-import { storesContext } from '../../contexts/storesContext'
+import { storesContext } from '../../contexts/storesContext';
 import { 
   Header, 
   Body,
@@ -10,17 +10,17 @@ import {
   HeaderContent,
   ButtonContainer,
   StyledTopicCard,
-} from './styled'
-import { Button } from '../Button'
+} from './styled';
+import { Button } from '../Button';
 
 export const BoardPage = observer(({ topics, isAll }) => {
-  const { boardStore } = useContext(storesContext)
-  const board = boardStore.currentBoard
+  const { boardStore } = useContext(storesContext);
+  const board = boardStore.currentBoard;
 
-  if (!board) return <div />
+  if (!board) return <div />;
 
   const renderSeeAllButton = () => {
-    if (isAll) return <div />
+    if (isAll) return <div />;
 
     return (
       <Link href={`/boards?board=${board.slug}&all=true`} passHref>
@@ -28,8 +28,8 @@ export const BoardPage = observer(({ topics, isAll }) => {
           + ALL TOPICS
         </Button>
       </Link>
-    )
-  }
+    );
+  };
   
   return (
     <>
@@ -60,5 +60,5 @@ export const BoardPage = observer(({ topics, isAll }) => {
         </ButtonContainer>
       </Body>
     </>
-  )
-})
+  );
+});

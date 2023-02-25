@@ -1,6 +1,6 @@
-import { css } from '@emotion/core'
+import { css } from '@emotion/core';
 
-import { colors } from './variables'
+import { colors } from './variables';
 
 export const globalStyle = css`
   * {
@@ -25,4 +25,4 @@ export const globalStyle = css`
     padding: 0;
     margin: 0;
   }
-`
+`;

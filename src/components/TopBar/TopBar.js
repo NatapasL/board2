@@ -1,9 +1,9 @@
-import { useContext } from 'react'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
-import { observer } from 'mobx-react-lite'
+import { useContext } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { observer } from 'mobx-react-lite';
 
-import { storesContext } from '../../contexts/storesContext'
+import { storesContext } from '../../contexts/storesContext';
 import {
   Container,
   BreadcrumbContainer,
@@ -12,22 +12,22 @@ import {
   BackButton,
   MenuButton,
   RightContainer,
-} from './styled'
-import { SideBar } from '../SideBar'
+} from './styled';
+import { SideBar } from '../SideBar';
 
 export const TopBar = observer(({ onMenuButtonClick }) => {
-  const router = useRouter()
-  const { boardStore, topicStore } = useContext(storesContext)
-  const { board, topic } = router.query
+  const router = useRouter();
+  const { boardStore, topicStore } = useContext(storesContext);
+  const { board, topic } = router.query;
 
-  let currentBoard
+  let currentBoard;
   if (boardStore.currentBoard && boardStore.currentBoard.slug == board) {
-    currentBoard = boardStore.currentBoard
+    currentBoard = boardStore.currentBoard;
   }
 
-  let currentTopic
+  let currentTopic;
   if (topicStore.currentTopic && Number(topicStore.currentTopic.id) === Number(topic)) {
-    currentTopic = topicStore.currentTopic
+    currentTopic = topicStore.currentTopic;
   }
 
   const renderBreadcrumb = () => {
@@ -51,16 +51,16 @@ export const TopBar = observer(({ onMenuButtonClick }) => {
           </> 
         )}
       </BreadcrumbContainer>
-    )
-  }
+    );
+  };
 
   const renderBackButton = () => {
     return (
       <BackButton onClick={() => router.back()}>
         BACK
       </BackButton>
-    )
-  }
+    );
+  };
 
   return (
     <Container>
@@ -79,9 +79,7 @@ export const TopBar = observer(({ onMenuButtonClick }) => {
         </MenuButton>
       </RightContainer>
     </Container>
-  )
-})
+  );
+});
 
-TopBar.defaultProps = {
-  onMenuButtonClick: () => {}
-}
+TopBar.defaultProps = { onMenuButtonClick: () => {} };
