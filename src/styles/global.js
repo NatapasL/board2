@@ -4,7 +4,7 @@ import { colors } from './variables'
 
 export const globalStyle = css`
   * {
-    font-family: 'Athiti', sans-serif;
+    font-family: 'Sarabun', sans-serif;
     line-height: 1.35;
     color: ${colors.black2};
   }
