@@ -18,22 +18,26 @@ import {
 
 dayjs.extend(relativeTime);
 
+export interface PostCardPros {
+  post: Post;
+  className: string;
+  first: boolean;
+  active: boolean;
+}
+
+interface Post {
+  number: number;
+  ident: string;
+  body: string;
+  created_at: string;
+}
+
 export const PostCard = ({
   post,
   className,
   first,
   active,
-}: {
-  post: {
-    number: number;
-    ident: string;
-    body: string;
-    created_at: string;
-  };
-  className: string;
-  first: boolean;
-  active: boolean;
-}): ReactElement => {
+}: PostCardPros): ReactElement => {
   const router = useRouter();
 
   const displayCreatedAt = (): string => {
