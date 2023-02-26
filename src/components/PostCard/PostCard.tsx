@@ -49,16 +49,14 @@ export const PostCard = ({
     const config = [
       {
         regex: /https:\/\/fanboi\.ch(\/([^/]*)(\/((\d+)(\/(\d+))?))?)\/?/,
-        fn: (key: string, result: string[]) => {
-          return (
-            <PostLink
-              key={key}
-              onClick={(): void => linkToOtherTopicPost(result[1])}
-            >
-              →{result[1]}
-            </PostLink>
-          );
-        },
+        fn: (key: string, result: string[]) => (
+          <PostLink
+            key={key}
+            onClick={(): void => linkToOtherTopicPost(result[1])}
+          >
+            →{result[1]}
+          </PostLink>
+        ),
       },
       {
         regex: URL_REGEX,

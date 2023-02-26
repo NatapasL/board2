@@ -33,29 +33,27 @@ export const TopBar = observer(({ onMenuButtonClick }) => {
     currentTopic = topicStore.currentTopic;
   }
 
-  const renderBreadcrumb = () => {
-    return (
-      <BreadcrumbContainer>
-        {currentBoard && (
-          <>
-            <Link href={`/boards?board=${currentBoard.slug}`} passHref>
-              <BreadcrumbLabel>{currentBoard.slug}</BreadcrumbLabel>
-            </Link>
-            {currentTopic && (
-              <>
-                {' | '}
-                <BreadcrumbLabel>{currentTopic.id}</BreadcrumbLabel>
-              </>
-            )}
-          </>
-        )}
-      </BreadcrumbContainer>
-    );
-  };
+  const renderBreadcrumb = () => (
+    <BreadcrumbContainer>
+      {currentBoard && (
+        <>
+          <Link href={`/boards?board=${currentBoard.slug}`} passHref>
+            <BreadcrumbLabel>{currentBoard.slug}</BreadcrumbLabel>
+          </Link>
+          {currentTopic && (
+            <>
+              {' | '}
+              <BreadcrumbLabel>{currentTopic.id}</BreadcrumbLabel>
+            </>
+          )}
+        </>
+      )}
+    </BreadcrumbContainer>
+  );
 
-  const renderBackButton = () => {
-    return <BackButton onClick={() => router.back()}>BACK</BackButton>;
-  };
+  const renderBackButton = () => (
+    <BackButton onClick={() => router.back()}>BACK</BackButton>
+  );
 
   return (
     <Container>
