@@ -8,8 +8,12 @@ import { storesContext } from 'src/contexts/storesContext';
 export default observer(() => {
   const { blockStore } = useContext(storesContext);
 
-  if (typeof window === "undefined") {
-    return <Layout><div /></Layout>;
+  if (typeof window === 'undefined') {
+    return (
+      <Layout>
+        <div />
+      </Layout>
+    );
   }
 
   const { blockedList } = blockStore;
@@ -30,7 +34,7 @@ export default observer(() => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(blockedList).map(key => (
+          {Object.keys(blockedList).map((key) => (
             <tr key={key}>
               <td>{blockedList[key].id}</td>
               <td>{blockedList[key].type}</td>

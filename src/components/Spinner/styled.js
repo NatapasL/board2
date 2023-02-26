@@ -10,7 +10,7 @@ export const Backdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  display: ${props => props.active ? 'flex' : 'none'};
+  display: ${(props) => (props.active ? 'flex' : 'none')};
   justify-content: center;
   align-items: center;
 `;
@@ -36,9 +36,13 @@ export const SpinnerAnimation = styled.div`
   border-top: 4px solid ${colors.black4};
   animation: rotate 1.5s linear infinite;
 
-  @keyframes rotate{
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 `;
 
@@ -46,4 +50,3 @@ export const Text = styled.div`
   margin-top: 8px;
   font-size: 14px;
 `;
-

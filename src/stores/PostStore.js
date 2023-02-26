@@ -10,7 +10,7 @@ class PostStore {
   }
 
   getPost = (number) => {
-    return this.posts.find(post => post.number === number);
+    return this.posts.find((post) => post.number === number);
   };
 }
 

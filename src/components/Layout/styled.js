@@ -6,17 +6,17 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  
+
   ${mq.sm} {
     max-width: 640px;
   }
 
   ${mq.md} {
-    max-width: 768px
+    max-width: 768px;
   }
 
   ${mq.lg} {
-    max-width: 980px
+    max-width: 980px;
   }
 `;
 

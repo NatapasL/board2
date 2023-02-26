@@ -35,13 +35,11 @@ export const ButtonContainer = styled.div`
   display: flex;
   width: 100%;
   margin-top: 16px;
-  ${props => (props.center && `justify-content: center;`)}
+  ${(props) => props.center && `justify-content: center;`}
 `;
 
 export const StyledTopicCard = styled(TopicCard)`
   margin: 4px 0;
 `;
 
-export const Body = styled.div`
-
-`;
+export const Body = styled.div``;

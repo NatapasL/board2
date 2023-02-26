@@ -26,7 +26,10 @@ export const TopBar = observer(({ onMenuButtonClick }) => {
   }
 
   let currentTopic;
-  if (topicStore.currentTopic && Number(topicStore.currentTopic.id) === Number(topic)) {
+  if (
+    topicStore.currentTopic &&
+    Number(topicStore.currentTopic.id) === Number(topic)
+  ) {
     currentTopic = topicStore.currentTopic;
   }
 
@@ -36,30 +39,22 @@ export const TopBar = observer(({ onMenuButtonClick }) => {
         {currentBoard && (
           <>
             <Link href={`/boards?board=${currentBoard.slug}`} passHref>
-              <BreadcrumbLabel>
-                {currentBoard.slug}
-              </BreadcrumbLabel>
+              <BreadcrumbLabel>{currentBoard.slug}</BreadcrumbLabel>
             </Link>
             {currentTopic && (
               <>
                 {' | '}
-                <BreadcrumbLabel>
-                  {currentTopic.id}
-                </BreadcrumbLabel>
+                <BreadcrumbLabel>{currentTopic.id}</BreadcrumbLabel>
               </>
             )}
-          </> 
+          </>
         )}
       </BreadcrumbContainer>
     );
   };
 
   const renderBackButton = () => {
-    return (
-      <BackButton onClick={() => router.back()}>
-        BACK
-      </BackButton>
-    );
+    return <BackButton onClick={() => router.back()}>BACK</BackButton>;
   };
 
   return (
@@ -68,15 +63,9 @@ export const TopBar = observer(({ onMenuButtonClick }) => {
         {renderBackButton()}
         {renderBreadcrumb()}
       </LeftContainer>
-      {!currentTopic && (
-        <div>
-          Kyou mo kawaii!
-        </div>
-      )}
+      {!currentTopic && <div>Kyou mo kawaii!</div>}
       <RightContainer>
-        <MenuButton onClick={onMenuButtonClick}>
-          BOARD LIST
-        </MenuButton>
+        <MenuButton onClick={onMenuButtonClick}>BOARD LIST</MenuButton>
       </RightContainer>
     </Container>
   );

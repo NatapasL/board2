@@ -4,7 +4,7 @@ import { colors } from '../../styles/variables';
 
 export const Container = styled.div`
   position: fixed;
-  width: ${props => props.active ? '100vw' : 0};
+  width: ${(props) => (props.active ? '100vw' : 0)};
   height: calc(100vh - 40px);
   top: 40px;
   right: 0;

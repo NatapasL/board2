@@ -1,28 +1,32 @@
 import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import {
-  useContext, useEffect, useMemo, useState
-} from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 
 import { storesContext } from '../../contexts/storesContext';
 import { Button } from '../Button';
 import {
-  Body, ButtonContainer,
-  FilterContainer, FirstPostCard, Header, StyledPostCard, Title
+  Body,
+  ButtonContainer,
+  FilterContainer,
+  FirstPostCard,
+  Header,
+  StyledPostCard,
+  Title,
 } from './styled';
 
 export const TopicPage = observer(({ posts, isRecent }) => {
   const router = useRouter();
   const [activePostNumber, setActivePostNumber] = useState(-1);
 
-  const {
- topicStore, boardStore, blockStore
-} = useContext(storesContext);
+  const { topicStore, boardStore, blockStore } = useContext(storesContext);
   const topic = topicStore.currentTopic;
   const board = boardStore.currentBoard;
 
-  const postNumbers = useMemo(() => posts.map(post => post.number), [JSON.stringify(posts)]);
+  const postNumbers = useMemo(
+    () => posts.map((post) => post.number),
+    [JSON.stringify(posts)]
+  );
 
   useEffect(() => {
     const s = router.asPath.match(/activePost=(\d{1,4})/);
@@ -60,11 +64,17 @@ export const TopicPage = observer(({ posts, isRecent }) => {
   };
 
   const filteredPosts = useMemo(() => {
-    let result = isRecent ? posts : posts.filter(post => Number(post.number) > 1);
-    result = result.filter(post => !blockStore.userIds.includes(post.ident));
+    let result = isRecent
+      ? posts
+      : posts.filter((post) => Number(post.number) > 1);
+    result = result.filter((post) => !blockStore.userIds.includes(post.ident));
 
     return result;
-  }, [isRecent, JSON.stringify(posts || []), JSON.stringify(blockStore.userIds)]);
+  }, [
+    isRecent,
+    JSON.stringify(posts || []),
+    JSON.stringify(blockStore.userIds),
+  ]);
 
   if (!topic || !board) return <div />;
 
@@ -73,22 +83,21 @@ export const TopicPage = observer(({ posts, isRecent }) => {
 
     return (
       <ButtonContainer center={center}>
-        <Link href={`/boards/topics?board=${board.slug}&topic=${topic.id}`} passHref>
-          <Button type="see_all">
-            + ALL POSTS
-          </Button>
+        <Link
+          href={`/boards/topics?board=${board.slug}&topic=${topic.id}`}
+          passHref
+        >
+          <Button type="see_all">+ ALL POSTS</Button>
         </Link>
       </ButtonContainer>
     );
   };
 
   const renderFirstPost = () => {
-    const firstPost = posts.find(post => Number(post.number) === 1);
+    const firstPost = posts.find((post) => Number(post.number) === 1);
     if (!firstPost) return <div />;
 
-    return (
-      <FirstPostCard post={firstPost} first />
-    );
+    return <FirstPostCard post={firstPost} first />;
   };
 
   return (
@@ -99,16 +108,16 @@ export const TopicPage = observer(({ posts, isRecent }) => {
         {renderSeeAllButton()}
       </Header>
       <FilterContainer>
-        { isRecent ? 'LATEST POSTS' : 'ALL POSTS' }
+        {isRecent ? 'LATEST POSTS' : 'ALL POSTS'}
       </FilterContainer>
       <Body>
-        {filteredPosts.map(post =>
+        {filteredPosts.map((post) => (
           <StyledPostCard
             key={post.id}
             post={post}
             active={post.number === activePostNumber}
           />
-        )}
+        ))}
         {renderSeeAllButton(true)}
       </Body>
     </>

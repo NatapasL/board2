@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-import { 
+import {
   HANDLER_GET_TOPIC,
-  HANDLER_RECENT_TOPICS, 
-  HANDLER_ALL_TOPICS 
+  HANDLER_RECENT_TOPICS,
+  HANDLER_ALL_TOPICS,
 } from './../constants/api';
 
 export const getTopic = (topicId) => {

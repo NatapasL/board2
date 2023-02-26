@@ -1,7 +1,4 @@
-import { 
-  Container,
-  ArrowContainer,
-} from './styled';
+import { Container, ArrowContainer } from './styled';
 
 export const ScrollButton = ({ active }) => {
   return (

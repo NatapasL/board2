@@ -1,19 +1,20 @@
-import {
-  action, computed, observable
-} from 'mobx';
+import { action, computed, observable } from 'mobx';
 import { TYPE_USER } from '../constants/blockedStore';
 
 const STORAGE_KEY = 'blockedList';
 
 class BlockStore {
-  @observable blockedList: { [s: string]: BlockItem } = this.getFromLocalStorage();
+  @observable blockedList: { [s: string]: BlockItem } =
+    this.getFromLocalStorage();
 
   @action
   addToList(type: string, id: string): void {
     const key = this.generateKey(type, id);
     this.blockedList[key] = {
- id, type, createdAt: new Date().getTime()
-};
+      id,
+      type,
+      createdAt: new Date().getTime(),
+    };
     this.updateLocalStorage();
   }
 
@@ -27,7 +28,7 @@ class BlockStore {
   @computed
   get userIds(): string[] {
     const ids: string[] = [];
-    for(const key in this.blockedList) {
+    for (const key in this.blockedList) {
       if (this.blockedList[key].type === TYPE_USER) {
         ids.push(this.blockedList[key].id);
       }
@@ -37,7 +38,7 @@ class BlockStore {
   }
 
   generateKey(type: string, id: string): string {
-    return  `${type}$${id}`;
+    return `${type}$${id}`;
   }
 
   getFromLocalStorage(): { [s: string]: BlockItem } {

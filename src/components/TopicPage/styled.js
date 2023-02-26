@@ -20,7 +20,7 @@ export const ButtonContainer = styled.div`
   width: 100%;
   margin-top: 16px;
   padding-bottom: 8px;
-  ${props => (props.center && `justify-content: center;`)}
+  ${(props) => props.center && `justify-content: center;`}
 `;
 
 export const FilterContainer = styled.div`
@@ -37,9 +37,7 @@ export const FilterContainer = styled.div`
   }
 `;
 
-export const Body = styled.div`
-
-`;
+export const Body = styled.div``;
 
 export const StyledPostCard = styled(PostCard)`
   margin: 4px 0;

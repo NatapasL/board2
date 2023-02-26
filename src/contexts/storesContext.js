@@ -9,5 +9,5 @@ export const storesContext = createContext({
   boardStore: new BoardStore(),
   topicStore: new TopicStore(),
   postStore: new PostStore(),
-  blockStore: new BlockStore()
+  blockStore: new BlockStore(),
 });

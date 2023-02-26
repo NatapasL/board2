@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import processString from 'react-process-string';
 
 import { URL_REGEX } from '../../constants/regex';
-import { 
+import {
   PostContainer,
   PostInfoContainer,
   PostBodyContainer,
@@ -21,17 +21,14 @@ export const Post = ({ post }) => {
           <a key={key} href={result[0]}>
             {result[0]}
           </a>
-        )
+        ),
       },
       {
         regex: />>(\d{1,4})/,
         fn: (key, result) => (
-          <PostNavigateLink 
-            key={key} 
-            postNumber={Number(result[1])} 
-          />
-        )
-      }
+          <PostNavigateLink key={key} postNumber={Number(result[1])} />
+        ),
+      },
     ];
 
     return processString(config)(text);
@@ -41,20 +38,12 @@ export const Post = ({ post }) => {
     <PostContainer id={post.number}>
       <PostInfoContainer>
         <div>
-          <div>
-            No.{post.number}
-          </div>
-          <div>
-            {parseTime(post.created_at)}
-          </div>
+          <div>No.{post.number}</div>
+          <div>{parseTime(post.created_at)}</div>
         </div>
-        <IdentityInfo>
-          {post.ident}
-        </IdentityInfo>
+        <IdentityInfo>{post.ident}</IdentityInfo>
       </PostInfoContainer>
-      <PostBodyContainer>
-        {formatPostBody(post.body)}
-      </PostBodyContainer>
+      <PostBodyContainer>{formatPostBody(post.body)}</PostBodyContainer>
     </PostContainer>
   );
 };

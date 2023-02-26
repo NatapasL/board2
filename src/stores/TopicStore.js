@@ -13,7 +13,7 @@ class TopicStore {
 
   @action
   setCurrentTopic(id) {
-    const topic = this.topics?.find(topic => Number(topic.id) === Number(id));
+    const topic = this.topics?.find((topic) => Number(topic.id) === Number(id));
     if (topic) {
       this.currentTopic = topic;
       return;

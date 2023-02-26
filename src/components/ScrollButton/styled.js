@@ -7,11 +7,9 @@ export const Container = styled.div`
   position: fixed;
   bottom: 24px;
   right: 8px;
-  transform: ${props => props.active 
-    ? 'translateY(0)' 
-    : 'translateY(calc(100% + 24px))'
-  };
-  background-color: rgba(237,239,241, 0.75);
+  transform: ${(props) =>
+    props.active ? 'translateY(0)' : 'translateY(calc(100% + 24px))'};
+  background-color: rgba(237, 239, 241, 0.75);
   display: flex;
 
   transition: transform 250ms linear;

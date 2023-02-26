@@ -5,9 +5,7 @@ export const Container = styled.span`
   position: relative;
 `;
 
-export const LinkContainer = styled.a`
-  
-`;
+export const LinkContainer = styled.a``;
 
 export const PopupContainer = styled.div`
   position: absolute;

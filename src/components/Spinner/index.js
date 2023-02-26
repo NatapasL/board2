@@ -1,15 +1,8 @@
-import {
- useState, useRef, useEffect 
-} from 'react';
+import { useState, useRef, useEffect } from 'react';
 import EventEmitter from 'eventemitter3';
 
 import { useStore } from 'src/hooks/useStore';
-import { 
-  Backdrop, 
-  Container,
-  SpinnerAnimation,
-  Text
-} from './styled';
+import { Backdrop, Container, SpinnerAnimation, Text } from './styled';
 
 const emitter = new EventEmitter();
 
@@ -23,7 +16,7 @@ export const Spinner = () => {
   useEffect(() => {
     emitter.on('showSpinner', handleShowSpinner);
     emitter.on('hideSpinner', handleHideSpinner);
-    
+
     return () => {
       emitter.off('showSpinner');
       emitter.off('hideSpinner');

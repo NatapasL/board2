@@ -1,6 +1,4 @@
-
-require('dotenv').config()
-
+require('dotenv').config();
 
 // @ts-check
 /**
@@ -11,8 +9,6 @@ module.exports = {
   trailingSlash: true,
   env: {
     HOST: process.env.HOST || 'http://0.0.0.0:3000',
-    BACKEND_BASE_URL:
-      process.env.BACKEND_BASE_URL ||
-        '/api/common'
+    BACKEND_BASE_URL: process.env.BACKEND_BASE_URL || '/api/common',
   },
-}
+};

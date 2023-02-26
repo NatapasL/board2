@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { observer } from 'mobx-react-lite';
 
 import { storesContext } from '../../contexts/storesContext';
-import { 
-  Header, 
+import {
+  Header,
   Body,
   Title,
   HeaderContent,
@@ -24,13 +24,11 @@ export const BoardPage = observer(({ topics, isAll }) => {
 
     return (
       <Link href={`/boards?board=${board.slug}&all=true`} passHref>
-        <Button type="see_all">
-          + ALL TOPICS
-        </Button>
+        <Button type="see_all">+ ALL TOPICS</Button>
       </Link>
     );
   };
-  
+
   return (
     <>
       <Header>
@@ -38,14 +36,13 @@ export const BoardPage = observer(({ topics, isAll }) => {
           <h1>/{board.slug}</h1>
         </Title>
         <HeaderContent>
-          <b>{board.title}</b> <br />{board.description}
-          <ButtonContainer>
-            {renderSeeAllButton()}
-          </ButtonContainer>
+          <b>{board.title}</b> <br />
+          {board.description}
+          <ButtonContainer>{renderSeeAllButton()}</ButtonContainer>
         </HeaderContent>
       </Header>
       <Body>
-        {topics.map(topic => (
+        {topics.map((topic) => (
           <Link
             key={topic.id}
             href={`/boards/topics?board=${board.slug}&topic=${topic.id}&recent=true`}
@@ -53,11 +50,8 @@ export const BoardPage = observer(({ topics, isAll }) => {
           >
             <StyledTopicCard topic={topic} />
           </Link>
-        ))
-        }
-        <ButtonContainer center>
-          {renderSeeAllButton()}
-        </ButtonContainer>
+        ))}
+        <ButtonContainer center>{renderSeeAllButton()}</ButtonContainer>
       </Body>
     </>
   );

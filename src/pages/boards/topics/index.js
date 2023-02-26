@@ -1,8 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
-import {
-  useContext, useEffect, useState
-} from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { getAllPosts, getRecentPosts } from 'src/api/postApi';
 import { Layout } from 'src/components/Layout';
@@ -21,17 +19,15 @@ export default observer(() => {
     showSpinner();
 
     if (recent) {
-      getRecentPosts(topic)
-        .then(({ data }) => {
-          postStore.setPosts(data.posts);
-          hideSpinner();
-        });
+      getRecentPosts(topic).then(({ data }) => {
+        postStore.setPosts(data.posts);
+        hideSpinner();
+      });
     } else {
-      getAllPosts(topic)
-        .then(({ data }) => {
-          postStore.setPosts(data);
-          hideSpinner();
-        });
+      getAllPosts(topic).then(({ data }) => {
+        postStore.setPosts(data);
+        hideSpinner();
+      });
     }
   };
 
@@ -51,9 +47,7 @@ export default observer(() => {
 
   return (
     <Layout>
-      {!!posts && (
-        <TopicPage posts={posts} isRecent={isRecent} />
-      )}
+      {!!posts && <TopicPage posts={posts} isRecent={isRecent} />}
     </Layout>
   );
 });

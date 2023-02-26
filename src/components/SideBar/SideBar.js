@@ -11,7 +11,7 @@ import {
   ItemRightText,
   LinkButton,
   SelectBar,
-  BlockManagementButton
+  BlockManagementButton,
 } from './styled';
 
 export const SideBar = observer(({ active, onUpdateActive }) => {
@@ -29,19 +29,17 @@ export const SideBar = observer(({ active, onUpdateActive }) => {
     <Container active={active}>
       <SelectBar>
         Select Board
-        <BlockManagementButton href={'/blocks'}>❯ BLOCK MANAGEMENT</BlockManagementButton>
+        <BlockManagementButton href={'/blocks'}>
+          ❯ BLOCK MANAGEMENT
+        </BlockManagementButton>
       </SelectBar>
       <ListContainer>
-        {boardStore.boardList.map(board => (
+        {boardStore.boardList.map((board) => (
           <Link key={board.id} href={`/boards?board=${board.slug}`} passHref>
             <ItemContainer>
-              <ItemLeftText>
-                {board.slug}
-              </ItemLeftText>
+              <ItemLeftText>{board.slug}</ItemLeftText>
               <ItemRightText>
-                <LinkButton>
-                  {board.title.toUpperCase()}
-                </LinkButton>
+                <LinkButton>{board.title.toUpperCase()}</LinkButton>
               </ItemRightText>
             </ItemContainer>
           </Link>

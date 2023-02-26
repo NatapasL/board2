@@ -1,6 +1,4 @@
-import {
- observable, action, computed 
-} from 'mobx';
+import { observable, action, computed } from 'mobx';
 
 import boards from '../json/boards.json';
 
@@ -22,7 +20,7 @@ class BoardStore {
 
   @computed
   get currentBoard() {
-    return this.boardList.find(board => board.slug === this.currentBoardSlug);
+    return this.boardList.find((board) => board.slug === this.currentBoardSlug);
   }
 }
 

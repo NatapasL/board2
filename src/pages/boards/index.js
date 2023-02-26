@@ -1,6 +1,4 @@
-import {
- useState, useEffect, useContext 
-} from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
 
@@ -21,17 +19,15 @@ export default observer(() => {
     showSpinner();
 
     if (all) {
-      getAllTopics(board)
-        .then(({ data }) => {
-          topicStore.setTopics(data);
-          hideSpinner();
-        });
+      getAllTopics(board).then(({ data }) => {
+        topicStore.setTopics(data);
+        hideSpinner();
+      });
     } else {
-      getRecentTopics(board)
-        .then(({ data }) => {
-          topicStore.setTopics(data.topics);
-          hideSpinner();
-        });
+      getRecentTopics(board).then(({ data }) => {
+        topicStore.setTopics(data.topics);
+        hideSpinner();
+      });
     }
   };
 
@@ -50,10 +46,6 @@ export default observer(() => {
   }, [router.query]);
 
   return (
-    <Layout>
-      {!!topics && (
-        <BoardPage topics={topics} isAll={isAll} />
-      )}
-    </Layout>
+    <Layout>{!!topics && <BoardPage topics={topics} isAll={isAll} />}</Layout>
   );
 });
