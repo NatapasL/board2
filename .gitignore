@@ -8,4 +8,4 @@ next-env.d.ts
 .vercel
 
 public/sw.js*
-public/worker*
+public/workbox*
