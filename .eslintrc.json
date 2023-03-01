@@ -25,6 +25,7 @@
     "semi": "warn",
     "@typescript-eslint/no-empty-function": "warn",
     "react/display-name": "warn",
-    "arrow-body-style": ["warn", "as-needed"]
+    "arrow-body-style": ["warn", "as-needed"],
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
   }
 }
