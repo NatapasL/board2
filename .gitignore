@@ -6,3 +6,6 @@ yarn-error.log
 next-env.d.ts
 .nvmrc
 .vercel
+
+public/sw.js*
+public/worker*
