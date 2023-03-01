@@ -1,19 +1,18 @@
-import { useContext } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { observer } from 'mobx-react-lite';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useContext } from 'react';
 
 import { storesContext } from '../../contexts/storesContext';
 import {
-  Container,
+  BackButton,
   BreadcrumbContainer,
   BreadcrumbLabel,
+  Container,
   LeftContainer,
-  BackButton,
   MenuButton,
   RightContainer,
 } from './styled';
-import { SideBar } from '../SideBar';
 
 export const TopBar = observer(({ onMenuButtonClick }) => {
   const router = useRouter();
@@ -61,7 +60,7 @@ export const TopBar = observer(({ onMenuButtonClick }) => {
         {renderBackButton()}
         {renderBreadcrumb()}
       </LeftContainer>
-      {!currentTopic && <div>Kyou mo kawaii!</div>}
+      {/* {!currentTopic && <div>Kyou mo kawaii!</div>} */}
       <RightContainer>
         <MenuButton onClick={onMenuButtonClick}>BOARD LIST</MenuButton>
       </RightContainer>
