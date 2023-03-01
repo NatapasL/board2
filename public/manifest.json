@@ -1,0 +1,16 @@
+{
+  "name": "tenshii",
+  "short_name": "tenshii",
+  "icons": [
+    {
+      "src": "/icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#EDEFF1",
+  "background_color": "#EDEFF1",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}

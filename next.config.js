@@ -5,10 +5,16 @@ require('dotenv').config();
  * @type {import('next').NextConfig}
  **/
 
-module.exports = {
+const nextPWA = require('next-pwa')
+
+const withPWA = nextPWA({
+  dest: 'public'
+})
+
+module.exports = withPWA({
   trailingSlash: true,
   env: {
     HOST: process.env.HOST || 'http://0.0.0.0:3000',
     BACKEND_BASE_URL: process.env.BACKEND_BASE_URL || '/api/common',
   },
-};
+});
