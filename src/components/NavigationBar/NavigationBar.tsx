@@ -52,7 +52,7 @@ export const NavigationBar = observer(({ onMenuButtonClick = (): void => undefin
     </BreadcrumbContainer>
   );
 
-  const renderBackButton = () => <BackButton onClick={() => router.back()}>BACK</BackButton>;
+  const renderBackButton = (): ReactElement => <BackButton onClick={(): void => router.back()}>BACK</BackButton>;
 
   return (
     <Container>

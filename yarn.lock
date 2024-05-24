@@ -6180,6 +6180,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-process-string: "npm:^1.2.0"
+    react-swipeable: "npm:^7.0.1"
     recompose: "npm:^0.30.0"
     titleize: "npm:^2.1.0"
     typescript: "npm:4.9.5"
@@ -6247,6 +6248,15 @@ __metadata:
   version: 1.2.0
   resolution: "react-process-string@npm:1.2.0"
   checksum: 10c0/c3a9b114b3adb92094a54dbfd9bb3d14e3972e5120b3237a248c77b444532b40fae8efcfcc5b613f18cf0ec838dfea6c108b66a58e22c944eddc090981e954ea
+  languageName: node
+  linkType: hard
+
+"react-swipeable@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "react-swipeable@npm:7.0.1"
+  peerDependencies:
+    react: ^16.8.3 || ^17 || ^18
+  checksum: 10c0/ebd34ac4cad0053db2a43a5113a1b1f2ecbe2badbf4b3aae14cf7292cf836991378637dc7b7da6cf5217215b92559b43dd43775ba3fea95e7e451dc76d029893
   languageName: node
   linkType: hard
 

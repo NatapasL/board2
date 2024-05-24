@@ -28,6 +28,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-process-string": "^1.2.0",
+    "react-swipeable": "^7.0.1",
     "recompose": "^0.30.0",
     "titleize": "^2.1.0",
     "url-regex": "^5.0.0"
