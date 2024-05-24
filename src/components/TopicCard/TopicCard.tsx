@@ -8,14 +8,14 @@ dayjs.extend(relativeTime);
 
 interface TopicCardProps {
   topic: Topic;
-  href: string;
-  onClick: MouseEventHandler<HTMLAnchorElement>;
-  className: string;
+  href?: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
+  className?: string;
 }
 
 const TopicCardComponent = (
   { topic, href, onClick, className }: TopicCardProps,
-  ref: ForwardedRef<ReactElement>
+  ref: ForwardedRef<HTMLAnchorElement>
 ): ReactElement => {
   const displayHref = href?.replace(/\?.*/, '').replace(/^\//, '');
   const timeDiff = dayjs(topic.posted_at).fromNow();
@@ -33,4 +33,4 @@ const TopicCardComponent = (
   );
 };
 
-export const TopicCard = forwardRef<ReactElement, TopicCardProps>(TopicCardComponent);
+export const TopicCard = forwardRef<HTMLAnchorElement, TopicCardProps>(TopicCardComponent);
