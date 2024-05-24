@@ -27,7 +27,7 @@ interface ContainerProps {
 
 export const Container = styled.div`
   position: fixed;
-  height: ${(props: ContainerProps): string => (props.active ? `${props.boardLength * 38 + 84}px` : '0')};
+  height: ${(props: ContainerProps): string => (props.active ? `${props.boardLength * 38 + 48}px` : '0')};
   max-height: calc(100vh - 40px);
   width: 100vw;
   bottom: 40px;
@@ -48,14 +48,13 @@ export const ListContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  padding-bottom: 16px;
   width: 100%;
   height: 100%;
 `;
 
 export const ItemContainer = styled.a`
   background-color: ${colors.white};
-  margin-bottom: 2px;
+  margin-bottom: 1px;
   display: flex;
   justify-content: space-between;
   white-space: nowrap;

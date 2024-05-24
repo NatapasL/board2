@@ -44,7 +44,7 @@ export const FilterContainer = styled.div`
 export const Body = styled.div``;
 
 export const StyledPostCard = styled(PostCard)`
-  margin: 4px 0;
+  margin: 1px 0;
 `;
 
 export const FirstPostCard = styled(PostCard)`

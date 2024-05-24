@@ -43,7 +43,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const StyledTopicCard = styled(TopicCard)`
-  margin: 4px 0;
+  margin: 1px 0;
 `;
 
 export const Body = styled.div``;
