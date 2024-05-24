@@ -43,7 +43,7 @@ export const NavigationBar = observer(({ onMenuButtonClick = (): void => undefin
           </Link>
           {currentTopic && (
             <>
-              {' | '}
+              <div>{' | '}</div>
               <BreadcrumbLabel>{currentTopic.id}</BreadcrumbLabel>
             </>
           )}
@@ -56,10 +56,8 @@ export const NavigationBar = observer(({ onMenuButtonClick = (): void => undefin
 
   return (
     <Container>
-      <LeftContainer>
-        {renderBackButton()}
-        {renderBreadcrumb()}
-      </LeftContainer>
+      <LeftContainer>{renderBackButton()}</LeftContainer>
+      {renderBreadcrumb()}
       {/* {!currentTopic && <div>Kyou mo kawaii!</div>} */}
       <RightContainer>
         <MenuButton onClick={onMenuButtonClick}>BOARD LIST</MenuButton>

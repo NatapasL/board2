@@ -8,9 +8,9 @@ interface BackdropProps {
 
 export const Backdrop = styled.div`
   width: ${(props: BackdropProps): string => (props.active ? '100vw' : '0')};
-  height: calc(100vh - 40px);
+  height: calc(100vh - 48px);
   position: fixed;
-  bottom: 40px;
+  bottom: 48px;
   right: 0;
   background-color: ${colors.black1};
   display: flex;
@@ -28,9 +28,9 @@ interface ContainerProps {
 export const Container = styled.div`
   position: fixed;
   height: ${(props: ContainerProps): string => (props.active ? `${props.boardLength * 38 + 48}px` : '0')};
-  max-height: calc(100vh - 40px);
+  max-height: calc(100vh - 48px);
   width: 100vw;
-  bottom: 40px;
+  bottom: 48px;
   right: 0;
   background-color: ${colors.grey};
   overflow: scroll;

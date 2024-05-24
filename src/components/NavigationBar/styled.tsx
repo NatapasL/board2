@@ -9,21 +9,32 @@ export const Container = styled.div`
   bottom: 0;
   color: #fff;
   padding: 8px 16px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 37px 1fr 62px;
+  height: 48px;
+  grid-column-gap: 8px;
+  align-items: flex-start;
 `;
 
 export const LeftContainer = styled.div`
   display: flex;
+  align-items: flex-start;
+  padding-top: 6px;
 `;
 
 export const RightContainer = styled.div`
   display: flex;
+  align-items: flex-start;
+  padding-top: 4px;
 `;
 
 export const BreadcrumbContainer = styled.div`
   height: 100%;
   margin-left: 8px;
+  display: flex;
+  column-gap: 4px;
+  align-items: center;
+  max-height: 20px;
 `;
 
 export const BreadcrumbLabel = styled.a`
@@ -32,7 +43,8 @@ export const BreadcrumbLabel = styled.a`
   font-weight: 600;
   font-size: 14px;
   color: ${colors.black1};
-  padding-bottom: 4px;
+  display: flex;
+  height: 20px;
 `;
 
 export const ActionButton = styled.a`
