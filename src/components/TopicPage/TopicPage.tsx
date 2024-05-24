@@ -45,6 +45,8 @@ export const TopicPage = observer(({ posts, isRecent }: TopicPageProps) => {
     }
 
     scrollToPost();
+
+    return undefined;
   }, [activePostNumber, JSON.stringify(posts)]);
 
   const scrollToPost = () => {
@@ -58,6 +60,8 @@ export const TopicPage = observer(({ posts, isRecent }: TopicPageProps) => {
       const asPath = router.asPath.replace(/&activePost=[^&]*/, '');
       router.replace(router.route, asPath, { scroll: false });
     }, 2000);
+
+    return undefined;
   };
 
   const filteredPosts = useMemo(() => {
