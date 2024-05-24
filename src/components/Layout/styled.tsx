@@ -6,6 +6,7 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  min-height: 100vh;
 
   ${mq.sm} {
     max-width: 640px;

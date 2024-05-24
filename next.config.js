@@ -12,6 +12,15 @@ const withPWA = nextPWA({
 });
 
 module.exports = withPWA({
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/boards',
+        permanent: true,
+      },
+    ]
+  },
   trailingSlash: true,
   env: {
     HOST: process.env.HOST || 'http://0.0.0.0:3000',
