@@ -9,7 +9,7 @@
     "export": "next export",
     "start": "next start -p $PORT",
     "static": "http-server out -p 4000",
-    "lint": "eslint ."
+    "lint": "eslint -c ./.eslintrc.json ."
   },
   "dependencies": {
     "@emotion/core": "^10.3.1",

@@ -15,12 +15,16 @@ export const Title = styled.h1`
   padding: 0;
 `;
 
+interface ButtonContainerProps {
+  center?: boolean;
+}
+
 export const ButtonContainer = styled.div`
   display: flex;
   width: 100%;
   margin-top: 16px;
   padding-bottom: 8px;
-  ${(props) => props.center && `justify-content: center;`}
+  ${(props: ButtonContainerProps): string => (props.center ? `justify-content: center;` : '')}
 `;
 
 export const FilterContainer = styled.div`

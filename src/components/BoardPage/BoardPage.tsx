@@ -1,19 +1,18 @@
-import { useContext } from 'react';
-import Link from 'next/link';
 import { observer } from 'mobx-react-lite';
+import Link from 'next/link';
+import { ReactElement, useContext } from 'react';
 
+import { Topic } from 'src/models';
 import { storesContext } from '../../contexts/storesContext';
-import {
-  Header,
-  Body,
-  Title,
-  HeaderContent,
-  ButtonContainer,
-  StyledTopicCard,
-} from './styled';
 import { Button } from '../Button';
+import { Body, ButtonContainer, Header, HeaderContent, StyledTopicCard, Title } from './styled';
 
-export const BoardPage = observer(({ topics, isAll }) => {
+interface BoardPageProps {
+  topics: Topic[];
+  isAll: boolean;
+}
+
+export const BoardPage = observer(({ topics, isAll }: BoardPageProps): ReactElement => {
   const { boardStore } = useContext(storesContext);
   const board = boardStore.currentBoard;
 
@@ -42,12 +41,8 @@ export const BoardPage = observer(({ topics, isAll }) => {
         </HeaderContent>
       </Header>
       <Body>
-        {topics.map((topic) => (
-          <Link
-            key={topic.id}
-            href={`/boards/topics?board=${board.slug}&topic=${topic.id}&recent=true`}
-            passHref
-          >
+        {topics.map(topic => (
+          <Link key={topic.id} href={`/boards/topics?board=${board.slug}&topic=${topic.id}&recent=true`} passHref>
             <StyledTopicCard topic={topic} />
           </Link>
         ))}

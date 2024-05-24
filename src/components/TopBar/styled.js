@@ -47,7 +47,7 @@ export const ActionButton = styled.a`
 
 export const BackButton = styled(ActionButton)`
   padding-right: 8px;
-  ${(props) =>
+  ${props =>
     props.transparent &&
     `
     opacity: 0;

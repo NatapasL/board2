@@ -1,20 +1,24 @@
-import { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
+import { ReactElement, useContext, useEffect } from 'react';
 
 import { storesContext } from '../../contexts/storesContext';
 import {
+  BlockManagementButton,
   Container,
   ItemContainer,
-  ListContainer,
   ItemLeftText,
   ItemRightText,
   LinkButton,
+  ListContainer,
   SelectBar,
-  BlockManagementButton,
 } from './styled';
 
-export const SideBar = observer(({ active, onUpdateActive }) => {
+interface SideBarProps {
+  active: boolean;
+}
+
+export const SideBar = observer(({ active }: SideBarProps): ReactElement => {
   const { boardStore } = useContext(storesContext);
 
   useEffect(() => {
@@ -29,12 +33,10 @@ export const SideBar = observer(({ active, onUpdateActive }) => {
     <Container active={active}>
       <SelectBar>
         Select Board
-        <BlockManagementButton href={'/blocks'}>
-          ❯ BLOCK MANAGEMENT
-        </BlockManagementButton>
+        <BlockManagementButton href={'/blocks'}>❯ BLOCK MANAGEMENT</BlockManagementButton>
       </SelectBar>
       <ListContainer>
-        {boardStore.boardList.map((board) => (
+        {boardStore.boardList.map(board => (
           <Link key={board.id} href={`/boards?board=${board.slug}`} passHref>
             <ItemContainer>
               <ItemLeftText>{board.slug}</ItemLeftText>

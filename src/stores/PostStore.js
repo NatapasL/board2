@@ -9,7 +9,7 @@ class PostStore {
     this.posts = posts;
   }
 
-  getPost = (number) => this.posts.find((post) => post.number === number);
+  getPost = number => this.posts.find(post => post.number === number);
 }
 
 export default PostStore;

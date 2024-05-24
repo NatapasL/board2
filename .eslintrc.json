@@ -7,15 +7,14 @@
     "es2022": true
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "prettier"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "next",
     "next/core-web-vitals",
-    "prettier",
-    "plugin:prettier/recommended"
+    "prettier"
   ],
   "rules": {
     "max-len": ["warn", { "code": 120 }],
@@ -26,6 +25,6 @@
     "@typescript-eslint/no-empty-function": "warn",
     "react/display-name": "warn",
     "arrow-body-style": ["warn", "as-needed"],
-    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+    "prettier/prettier": ["error"]
   }
 }

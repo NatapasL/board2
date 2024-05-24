@@ -1,21 +1,19 @@
 import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { ReactElement, useContext, useEffect, useMemo, useState } from 'react';
 
+import { Post } from 'src/models';
 import { storesContext } from '../../contexts/storesContext';
 import { Button } from '../Button';
-import {
-  Body,
-  ButtonContainer,
-  FilterContainer,
-  FirstPostCard,
-  Header,
-  StyledPostCard,
-  Title,
-} from './styled';
+import { Body, ButtonContainer, FilterContainer, FirstPostCard, Header, StyledPostCard, Title } from './styled';
 
-export const TopicPage = observer(({ posts, isRecent }) => {
+interface TopicPageProps {
+  posts: Post[];
+  isRecent: boolean;
+}
+
+export const TopicPage = observer(({ posts, isRecent }: TopicPageProps) => {
   const router = useRouter();
   const [activePostNumber, setActivePostNumber] = useState(-1);
 
@@ -23,15 +21,14 @@ export const TopicPage = observer(({ posts, isRecent }) => {
   const topic = topicStore.currentTopic;
   const board = boardStore.currentBoard;
 
-  const postNumbers = useMemo(
-    () => posts.map((post) => post.number),
-    [JSON.stringify(posts)]
-  );
+  const postNumbers = useMemo(() => posts.map(post => post.number), [JSON.stringify(posts)]);
 
   useEffect(() => {
-    const s = router.asPath.match(/activePost=(\d{1,4})/);
-    if (s?.[1] ?? false) {
-      setActivePostNumber(Number(s[1]));
+    const activePostRegexpMatch = router.asPath.match(/activePost=(\d{1,4})/);
+    const activePost = activePostRegexpMatch?.[1];
+
+    if (typeof activePost === 'string') {
+      setActivePostNumber(Number(activePost));
     } else {
       setActivePostNumber(-1);
     }
@@ -64,29 +61,20 @@ export const TopicPage = observer(({ posts, isRecent }) => {
   };
 
   const filteredPosts = useMemo(() => {
-    let result = isRecent
-      ? posts
-      : posts.filter((post) => Number(post.number) > 1);
-    result = result.filter((post) => !blockStore.userIds.includes(post.ident));
+    let result = isRecent ? posts : posts.filter(post => Number(post.number) > 1);
+    result = result.filter(post => !blockStore.userIds.includes(post.ident));
 
     return result;
-  }, [
-    isRecent,
-    JSON.stringify(posts || []),
-    JSON.stringify(blockStore.userIds),
-  ]);
+  }, [isRecent, JSON.stringify(posts || []), JSON.stringify(blockStore.userIds)]);
 
   if (!topic || !board) return <div />;
 
-  const renderSeeAllButton = (center) => {
+  const renderSeeAllButton = (center?: boolean): ReactElement => {
     if (!isRecent) return <div />;
 
     return (
       <ButtonContainer center={center}>
-        <Link
-          href={`/boards/topics?board=${board.slug}&topic=${topic.id}`}
-          passHref
-        >
+        <Link href={`/boards/topics?board=${board.slug}&topic=${topic.id}`} passHref>
           <Button type="see_all">+ ALL POSTS</Button>
         </Link>
       </ButtonContainer>
@@ -94,7 +82,7 @@ export const TopicPage = observer(({ posts, isRecent }) => {
   };
 
   const renderFirstPost = () => {
-    const firstPost = posts.find((post) => Number(post.number) === 1);
+    const firstPost = posts.find(post => Number(post.number) === 1);
     if (!firstPost) return <div />;
 
     return <FirstPostCard post={firstPost} first />;
@@ -107,16 +95,10 @@ export const TopicPage = observer(({ posts, isRecent }) => {
         {!isRecent && renderFirstPost()}
         {renderSeeAllButton()}
       </Header>
-      <FilterContainer>
-        {isRecent ? 'LATEST POSTS' : 'ALL POSTS'}
-      </FilterContainer>
+      <FilterContainer>{isRecent ? 'LATEST POSTS' : 'ALL POSTS'}</FilterContainer>
       <Body>
-        {filteredPosts.map((post) => (
-          <StyledPostCard
-            key={post.id}
-            post={post}
-            active={post.number === activePostNumber}
-          />
+        {filteredPosts.map(post => (
+          <StyledPostCard key={post.id} post={post} active={post.number === activePostNumber} />
         ))}
         {renderSeeAllButton(true)}
       </Body>

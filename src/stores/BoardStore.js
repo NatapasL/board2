@@ -20,7 +20,7 @@ class BoardStore {
 
   @computed
   get currentBoard() {
-    return this.boardList.find((board) => board.slug === this.currentBoardSlug);
+    return this.boardList.find(board => board.slug === this.currentBoardSlug);
   }
 }
 

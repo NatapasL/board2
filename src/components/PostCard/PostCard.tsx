@@ -4,49 +4,28 @@ import { useRouter } from 'next/router';
 import { ReactElement } from 'react';
 import processString from 'react-process-string';
 
+import { Post } from 'src/models';
 import { URL_REGEX } from '../../constants/regex';
 import { BlockButton } from '../BlockButton';
-import {
-  ActiveContainer,
-  Body,
-  Container,
-  Header,
-  PostLink,
-  PostNumber,
-  StyledA,
-} from './styled';
+import { ActiveContainer, Body, Container, Header, PostLink, PostNumber, StyledA } from './styled';
 
 dayjs.extend(relativeTime);
 
-export interface PostCardPros {
+export interface PostCardProps {
   post: Post;
-  className: string;
-  first: boolean;
-  active: boolean;
+  className?: string;
+  first?: boolean;
+  active?: boolean;
 }
 
-interface Post {
-  number: number;
-  ident: string;
-  body: string;
-  created_at: string;
-}
-
-export const PostCard = ({
-  post,
-  className,
-  first,
-  active,
-}: PostCardPros): ReactElement => {
+export const PostCard = ({ post, className, first, active }: PostCardProps): ReactElement => {
   const router = useRouter();
 
   const displayCreatedAt = (): string => {
     const createdAt = dayjs(post.created_at);
     const isToday = createdAt.add(23, 'hour').isAfter(dayjs());
 
-    return isToday
-      ? createdAt.fromNow(true)
-      : createdAt.format('DD/MM/YY HH:mm:ss');
+    return isToday ? createdAt.fromNow(true) : createdAt.format('DD/MM/YY HH:mm:ss');
   };
 
   const formatPostBody = (text: string): string => {
@@ -54,10 +33,7 @@ export const PostCard = ({
       {
         regex: /https:\/\/fanboi\.ch(\/([^/]*)(\/((\d+)(\/(\d+))?))?)\/?/,
         fn: (key: string, result: string[]) => (
-          <PostLink
-            key={key}
-            onClick={(): void => linkToOtherTopicPost(result[1])}
-          >
+          <PostLink key={key} onClick={(): void => linkToOtherTopicPost(result[1])}>
             →{result[1]}
           </PostLink>
         ),
@@ -81,10 +57,7 @@ export const PostCard = ({
       {
         regex: />>>(\/[^/]+\/\d+(\/\d{1,4})?)/,
         fn: (key: string, result: string[]) => (
-          <PostLink
-            key={key}
-            onClick={(): void => linkToOtherTopicPost(result[1])}
-          >
+          <PostLink key={key} onClick={(): void => linkToOtherTopicPost(result[1])}>
             →{result[1]}
           </PostLink>
         ),
@@ -95,10 +68,7 @@ export const PostCard = ({
   };
 
   const linkToPost = (number: string): void => {
-    const asPath = router.asPath.replace(
-      /($|&activePost=[^&]*)/,
-      `&activePost=${number}`
-    );
+    const asPath = router.asPath.replace(/($|&activePost=[^&]*)/, `&activePost=${number}`);
     router.push(router.route, asPath, { scroll: false });
   };
 
@@ -110,9 +80,9 @@ export const PostCard = ({
     }
 
     const [, board, topic, , post] = matched;
-    const url = `/boards/topics?board=${board}${
-      topic ? `&topic=${topic}` : ''
-    }&${post ? `activePost=${post}` : 'recent=true'}`;
+    const url = `/boards/topics?board=${board}${topic ? `&topic=${topic}` : ''}&${
+      post ? `activePost=${post}` : 'recent=true'
+    }`;
     router.push(url);
   };
 

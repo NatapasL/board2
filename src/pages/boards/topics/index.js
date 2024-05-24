@@ -45,9 +45,5 @@ export default observer(() => {
     fetchData(topic, !!recent);
   }, [router.query]);
 
-  return (
-    <Layout>
-      {!!posts && <TopicPage posts={posts} isRecent={isRecent} />}
-    </Layout>
-  );
+  return <Layout>{!!posts && <TopicPage posts={posts} isRecent={isRecent} />}</Layout>;
 });

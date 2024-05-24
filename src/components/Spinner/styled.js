@@ -10,7 +10,7 @@ export const Backdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  display: ${(props) => (props.active ? 'flex' : 'none')};
+  display: ${props => (props.active ? 'flex' : 'none')};
   justify-content: center;
   align-items: center;
 `;

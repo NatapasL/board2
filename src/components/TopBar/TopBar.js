@@ -25,10 +25,7 @@ export const TopBar = observer(({ onMenuButtonClick }) => {
   }
 
   let currentTopic;
-  if (
-    topicStore.currentTopic &&
-    Number(topicStore.currentTopic.id) === Number(topic)
-  ) {
+  if (topicStore.currentTopic && Number(topicStore.currentTopic.id) === Number(topic)) {
     currentTopic = topicStore.currentTopic;
   }
 
@@ -50,9 +47,7 @@ export const TopBar = observer(({ onMenuButtonClick }) => {
     </BreadcrumbContainer>
   );
 
-  const renderBackButton = () => (
-    <BackButton onClick={() => router.back()}>BACK</BackButton>
-  );
+  const renderBackButton = () => <BackButton onClick={() => router.back()}>BACK</BackButton>;
 
   return (
     <Container>

@@ -12,10 +12,7 @@ export const PostNavigateLink = observer(({ postNumber }) => {
   const post = postStore.getPost(Number(postNumber));
 
   return (
-    <Container
-      onMouseEnter={() => setActive(true)}
-      onMouseLeave={() => setActive(false)}
-    >
+    <Container onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)}>
       <LinkContainer href={`#${postNumber}`}>#{postNumber}</LinkContainer>
       {post && active && (
         <PopupContainer>

@@ -45,7 +45,5 @@ export default observer(() => {
     fetchData(board, !!all);
   }, [router.query]);
 
-  return (
-    <Layout>{!!topics && <BoardPage topics={topics} isAll={isAll} />}</Layout>
-  );
+  return <Layout>{!!topics && <BoardPage topics={topics} isAll={isAll} />}</Layout>;
 });

@@ -2,18 +2,13 @@ import dayjs from 'dayjs';
 import processString from 'react-process-string';
 
 import { URL_REGEX } from '../../constants/regex';
-import {
-  PostContainer,
-  PostInfoContainer,
-  PostBodyContainer,
-  IdentityInfo,
-} from './styled';
+import { PostContainer, PostInfoContainer, PostBodyContainer, IdentityInfo } from './styled';
 import { PostNavigateLink } from '../PostNavigateLink';
 
 export const Post = ({ post }) => {
-  const parseTime = (time) => dayjs(time).format('DD/MM/YYYY HH:mm:ss');
+  const parseTime = time => dayjs(time).format('DD/MM/YYYY HH:mm:ss');
 
-  const formatPostBody = (text) => {
+  const formatPostBody = text => {
     const config = [
       {
         regex: URL_REGEX,
@@ -25,9 +20,7 @@ export const Post = ({ post }) => {
       },
       {
         regex: />>(\d{1,4})/,
-        fn: (key, result) => (
-          <PostNavigateLink key={key} postNumber={Number(result[1])} />
-        ),
+        fn: (key, result) => <PostNavigateLink key={key} postNumber={Number(result[1])} />,
       },
     ];
 

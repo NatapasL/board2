@@ -1,13 +1,17 @@
-import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { ReactElement, useEffect, useState } from 'react';
 
-import { Container, Background } from './styled';
+import { ScrollButton } from 'src/components/ScrollButton';
+import { Spinner } from 'src/components/Spinner';
 import { SideBar } from '../SideBar';
 import { TopBar } from '../TopBar';
-import { Spinner } from 'src/components/Spinner';
-import { ScrollButton } from 'src/components/ScrollButton';
+import { Background, Container } from './styled';
 
-export const Layout = ({ children }) => {
+interface LayoutProps {
+  children: ReactElement;
+}
+
+export const Layout = ({ children }: LayoutProps) => {
   const router = useRouter();
   const [sideBarActive, setSideBarActive] = useState(false);
 

@@ -34,15 +34,13 @@ export default observer(() => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(blockedList).map((key) => (
+          {Object.keys(blockedList).map(key => (
             <tr key={key}>
               <td>{blockedList[key].id}</td>
               <td>{blockedList[key].type}</td>
               <td>{new Date(blockedList[key].createdAt).toLocaleString()}</td>
               <td>
-                <button onClick={(): void => unblock(blockedList[key].id)}>
-                  UNBLOCK
-                </button>
+                <button onClick={(): void => unblock(blockedList[key].id)}>UNBLOCK</button>
               </td>
             </tr>
           ))}

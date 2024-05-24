@@ -4,8 +4,7 @@ import { TYPE_USER } from '../constants/blockedStore';
 const STORAGE_KEY = 'blockedList';
 
 class BlockStore {
-  @observable blockedList: { [s: string]: BlockItem } =
-    this.getFromLocalStorage();
+  @observable blockedList: { [s: string]: BlockItem } = this.getFromLocalStorage();
 
   @action
   addToList(type: string, id: string): void {
