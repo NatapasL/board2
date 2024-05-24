@@ -6,7 +6,7 @@ interface ContainerProps {
 
 export const Container = styled.div`
   position: fixed;
-  bottom: 42px;
+  bottom: 50px;
   right: 2px;
   transform: ${(props: ContainerProps): string => (props.active ? 'translateY(0)' : 'translateY(calc(100% + 24px))')};
   background-color: rgba(237, 239, 241, 0.75);

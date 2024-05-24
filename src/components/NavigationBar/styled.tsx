@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { colors } from '../../styles/variables';
 
 export const Container = styled.div`
+  box-sizing: border-box;
   /* background-color: #141518; */
   background-color: ${colors.grey};
   position: sticky;
