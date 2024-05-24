@@ -53,7 +53,7 @@ class BlockStore {
 
 export default BlockStore;
 
-interface BlockItem {
+export interface BlockItem {
   id: string;
   type: string;
   createdAt: number;

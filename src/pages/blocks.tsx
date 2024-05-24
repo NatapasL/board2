@@ -1,51 +1,38 @@
 import { observer } from 'mobx-react-lite';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { BlockTable } from 'src/components/BlockTable';
 
 import { Layout } from 'src/components/Layout';
 import { TYPE_USER } from 'src/constants/blockedStore';
 import { storesContext } from 'src/contexts/storesContext';
+import { BlockItem } from 'src/stores/BlockStore';
 
 export default observer(() => {
   const { blockStore } = useContext(storesContext);
 
+  const [blockedList, setBlockedList] = useState<{ [s: string]: BlockItem }>({});
+
   if (typeof window === 'undefined') {
     return (
       <Layout>
-        <div />
+        <BlockTable blockedList={{}} />
       </Layout>
     );
   }
 
-  const { blockedList } = blockStore;
+  const { blockedList: blockedListFromStore } = blockStore;
 
-  const unblock = (id: string): void => {
+  useEffect(() => {
+    setBlockedList(blockedListFromStore);
+  }, [JSON.stringify(blockedListFromStore)]);
+
+  const unBlock = (id: string): void => {
     blockStore.deleteFromList(TYPE_USER, id);
   };
 
   return (
     <Layout>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>TYPE</th>
-            <th>DATE</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(blockedList).map(key => (
-            <tr key={key}>
-              <td>{blockedList[key].id}</td>
-              <td>{blockedList[key].type}</td>
-              <td>{new Date(blockedList[key].createdAt).toLocaleString()}</td>
-              <td>
-                <button onClick={(): void => unblock(blockedList[key].id)}>UNBLOCK</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <BlockTable onUnblock={unBlock} blockedList={blockedList} />
     </Layout>
   );
 });
