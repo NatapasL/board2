@@ -1,13 +1,14 @@
 import styled from '@emotion/styled';
 
-import { colors } from 'src/styles/variables';
-import { transform } from 'lodash';
+interface ContainerProps {
+  active?: boolean;
+}
 
 export const Container = styled.div`
   position: fixed;
   bottom: 24px;
   right: 8px;
-  transform: ${props => (props.active ? 'translateY(0)' : 'translateY(calc(100% + 24px))')};
+  transform: ${(props: ContainerProps): string => (props.active ? 'translateY(0)' : 'translateY(calc(100% + 24px))')};
   background-color: rgba(237, 239, 241, 0.75);
   display: flex;
 

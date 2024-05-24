@@ -11,10 +11,10 @@ import { storesContext } from 'src/contexts/storesContext';
 export default observer(() => {
   const router = useRouter();
   const { postStore } = useContext(storesContext);
-  const [isRecent, setIsRecent] = useState();
+  const [isRecent, setIsRecent] = useState<boolean>();
   const { posts } = postStore;
 
-  const fetchData = (topic, recent) => {
+  const fetchData = (topic: string, recent: boolean | number): void => {
     postStore.setPosts([]);
     showSpinner();
 
@@ -39,11 +39,11 @@ export default observer(() => {
     if (!window) return;
 
     const { topic, recent } = router.query;
-    if (!topic) return;
+    if (typeof topic !== 'string') return;
 
     setIsRecent(!!recent);
     fetchData(topic, !!recent);
   }, [router.query]);
 
-  return <Layout>{!!posts && <TopicPage posts={posts} isRecent={isRecent} />}</Layout>;
+  return <Layout>{posts ? <TopicPage posts={posts} isRecent={isRecent} /> : <></>}</Layout>;
 });

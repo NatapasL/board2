@@ -1,18 +1,19 @@
-import { observable, action } from 'mobx';
+import { action, observable } from 'mobx';
 import { getTopic } from 'src/api/topicApi';
-import { showSpinner, hideSpinner } from 'src/components/Spinner';
+import { hideSpinner, showSpinner } from 'src/components/Spinner';
+import { Topic } from 'src/models';
 
 class TopicStore {
-  @observable topics = undefined;
-  @observable currentTopic;
+  @observable topics?: Topic[];
+  @observable currentTopic?: Topic;
 
   @action
-  setTopics(topics) {
+  setTopics(topics: Topic[]): void {
     this.topics = topics;
   }
 
   @action
-  setCurrentTopic(id) {
+  setCurrentTopic(id: string): void {
     const topic = this.topics?.find(topic => Number(topic.id) === Number(id));
     if (topic) {
       this.currentTopic = topic;

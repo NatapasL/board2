@@ -1,8 +1,9 @@
 import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
+import { MouseEventHandler, ReactElement, useContext } from 'react';
 
+import { Board, Topic } from 'src/models';
 import { storesContext } from '../../contexts/storesContext';
 import {
   BackButton,
@@ -14,22 +15,26 @@ import {
   RightContainer,
 } from './styled';
 
-export const TopBar = observer(({ onMenuButtonClick }) => {
+interface TopBarProps {
+  onMenuButtonClick: MouseEventHandler<HTMLAnchorElement>;
+}
+
+export const TopBar = observer(({ onMenuButtonClick = (): void => undefined }: TopBarProps) => {
   const router = useRouter();
   const { boardStore, topicStore } = useContext(storesContext);
   const { board, topic } = router.query;
 
-  let currentBoard;
+  let currentBoard: Board;
   if (boardStore.currentBoard && boardStore.currentBoard.slug == board) {
     currentBoard = boardStore.currentBoard;
   }
 
-  let currentTopic;
+  let currentTopic: Topic;
   if (topicStore.currentTopic && Number(topicStore.currentTopic.id) === Number(topic)) {
     currentTopic = topicStore.currentTopic;
   }
 
-  const renderBreadcrumb = () => (
+  const renderBreadcrumb = (): ReactElement => (
     <BreadcrumbContainer>
       {currentBoard && (
         <>
@@ -62,5 +67,3 @@ export const TopBar = observer(({ onMenuButtonClick }) => {
     </Container>
   );
 });
-
-TopBar.defaultProps = { onMenuButtonClick: () => {} };

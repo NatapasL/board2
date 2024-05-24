@@ -45,13 +45,13 @@ export const ActionButton = styled.a`
   font-family: Arial, Helvetica, sans-serif;
 `;
 
+interface BackButtonProps {
+  transparent?: boolean;
+}
+
 export const BackButton = styled(ActionButton)`
   padding-right: 8px;
-  ${props =>
-    props.transparent &&
-    `
-    opacity: 0;
-  `}
+  ${(props: BackButtonProps): string => (props.transparent ? `opacity: 0;` : '')}
 `;
 
 export const MenuButton = styled(ActionButton)``;

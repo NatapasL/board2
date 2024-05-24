@@ -1,18 +1,24 @@
 import dayjs from 'dayjs';
 import processString from 'react-process-string';
 
+import { ReactElement } from 'react';
+import { Post as PostModel } from 'src/models';
 import { URL_REGEX } from '../../constants/regex';
-import { PostContainer, PostInfoContainer, PostBodyContainer, IdentityInfo } from './styled';
 import { PostNavigateLink } from '../PostNavigateLink';
+import { IdentityInfo, PostBodyContainer, PostContainer, PostInfoContainer } from './styled';
 
-export const Post = ({ post }) => {
-  const parseTime = time => dayjs(time).format('DD/MM/YYYY HH:mm:ss');
+interface PostProps {
+  post: PostModel;
+}
 
-  const formatPostBody = text => {
+export const Post = ({ post }: PostProps): ReactElement => {
+  const parseTime = (time: string): string => dayjs(time).format('DD/MM/YYYY HH:mm:ss');
+
+  const formatPostBody = (text: string): string => {
     const config = [
       {
         regex: URL_REGEX,
-        fn: (key, result) => (
+        fn: (key: string, result: string[]) => (
           <a key={key} href={result[0]}>
             {result[0]}
           </a>
@@ -20,7 +26,7 @@ export const Post = ({ post }) => {
       },
       {
         regex: />>(\d{1,4})/,
-        fn: (key, result) => <PostNavigateLink key={key} postNumber={Number(result[1])} />,
+        fn: (key: string, result: string[]) => <PostNavigateLink key={key} postNumber={Number(result[1])} />,
       },
     ];
 
@@ -28,7 +34,7 @@ export const Post = ({ post }) => {
   };
 
   return (
-    <PostContainer id={post.number}>
+    <PostContainer id={`${post.number}`}>
       <PostInfoContainer>
         <div>
           <div>No.{post.number}</div>

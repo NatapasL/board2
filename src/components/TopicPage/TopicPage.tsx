@@ -10,7 +10,7 @@ import { Body, ButtonContainer, FilterContainer, FirstPostCard, Header, StyledPo
 
 interface TopicPageProps {
   posts: Post[];
-  isRecent: boolean;
+  isRecent: boolean | undefined;
 }
 
 export const TopicPage = observer(({ posts, isRecent }: TopicPageProps) => {

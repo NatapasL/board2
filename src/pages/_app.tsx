@@ -12,16 +12,16 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
   const { board, topic } = router.query;
 
   useEffect(() => {
-    if (!board) return;
+    if (typeof board !== 'string') return;
 
     boardStore.setCurrentBoard(board);
-  }, [board]);
+  }, [board, boardStore]);
 
   useEffect(() => {
-    if (!topic) return;
+    if (typeof topic !== 'string') return;
 
     topicStore.setCurrentTopic(topic);
-  }, [topic]);
+  }, [topic, topicStore]);
 
   return (
     <>

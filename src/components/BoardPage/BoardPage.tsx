@@ -9,7 +9,7 @@ import { Body, ButtonContainer, Header, HeaderContent, StyledTopicCard, Title } 
 
 interface BoardPageProps {
   topics: Topic[];
-  isAll: boolean;
+  isAll?: boolean;
 }
 
 export const BoardPage = observer(({ topics, isAll }: BoardPageProps): ReactElement => {

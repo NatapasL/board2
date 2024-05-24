@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
 
-import { zIndex, colors } from 'src/styles/variables';
+import { colors, zIndex } from 'src/styles/variables';
+
+interface BackdropProps {
+  active: boolean;
+}
 
 export const Backdrop = styled.div`
   width: 100vw;
@@ -10,7 +14,7 @@ export const Backdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  display: ${props => (props.active ? 'flex' : 'none')};
+  display: ${(props: BackdropProps): string => (props.active ? 'flex' : 'none')};
   justify-content: center;
   align-items: center;
 `;

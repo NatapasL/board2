@@ -1,15 +1,14 @@
-import { useState, useRef, useEffect } from 'react';
 import EventEmitter from 'eventemitter3';
+import { ReactElement, useEffect, useRef, useState } from 'react';
 
-import { useStore } from 'src/hooks/useStore';
 import { Backdrop, Container, SpinnerAnimation, Text } from './styled';
 
 const emitter = new EventEmitter();
 
-export const showSpinner = () => emitter.emit('showSpinner');
-export const hideSpinner = () => emitter.emit('hideSpinner');
+export const showSpinner = (): boolean => emitter.emit('showSpinner');
+export const hideSpinner = (): boolean => emitter.emit('hideSpinner');
 
-export const Spinner = () => {
+export const Spinner = (): ReactElement => {
   const [active, setActive] = useState(false);
   const count = useRef(0);
 
@@ -23,7 +22,7 @@ export const Spinner = () => {
     };
   }, []);
 
-  const handleShowSpinner = () => {
+  const handleShowSpinner = (): void => {
     count.current += 1;
 
     if (count.current > 0) {
@@ -31,7 +30,7 @@ export const Spinner = () => {
     }
   };
 
-  const handleHideSpinner = () => {
+  const handleHideSpinner = (): void => {
     count.current -= 1;
 
     if (count.current < 0) {

@@ -1,20 +1,20 @@
-import { useState, useEffect, useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
+import { useContext, useEffect, useState } from 'react';
 
-import { storesContext } from 'src/contexts/storesContext';
-import { Layout } from 'src/components/Layout';
+import { getAllTopics, getRecentTopics } from 'src/api/topicApi';
 import { BoardPage } from 'src/components/BoardPage';
-import { getRecentTopics, getAllTopics } from 'src/api/topicApi';
-import { showSpinner, hideSpinner } from 'src/components/Spinner';
+import { Layout } from 'src/components/Layout';
+import { hideSpinner, showSpinner } from 'src/components/Spinner';
+import { storesContext } from 'src/contexts/storesContext';
 
 export default observer(() => {
   const router = useRouter();
   const { topicStore } = useContext(storesContext);
-  const [isAll, setIsAll] = useState();
+  const [isAll, setIsAll] = useState<boolean>();
   const { topics } = topicStore;
 
-  const fetchData = (board, all) => {
+  const fetchData = (board: string, all?: boolean): void => {
     topicStore.setTopics([]);
     showSpinner();
 
@@ -39,11 +39,11 @@ export default observer(() => {
     if (!window) return;
 
     const { board, all } = router.query;
-    if (!board) return;
+    if (typeof board !== 'string') return;
 
     setIsAll(!!all);
     fetchData(board, !!all);
   }, [router.query]);
 
-  return <Layout>{!!topics && <BoardPage topics={topics} isAll={isAll} />}</Layout>;
+  return <Layout>{topics ? <BoardPage topics={topics} isAll={isAll} /> : <></>}</Layout>;
 });
