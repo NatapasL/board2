@@ -2,46 +2,45 @@ import styled from '@emotion/styled';
 
 import { colors } from '../../styles/variables';
 
+interface BackdropProps {
+  active?: boolean;
+}
+
+export const Backdrop = styled.div`
+  width: ${(props: BackdropProps): string => (props.active ? '100vw' : '0')};
+  height: calc(100vh - 40px);
+  position: fixed;
+  bottom: 40px;
+  right: 0;
+  background-color: ${colors.black1};
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  opacity: ${(props: BackdropProps): string => (props.active ? '0.9' : '0')};
+  transition: opacity 250ms;
+`;
+
 interface ContainerProps {
   active?: boolean;
+  boardLength: number;
 }
 
 export const Container = styled.div`
   position: fixed;
-  width: ${(props: ContainerProps): string => (props.active ? '100vw' : '0')};
-  height: calc(100vh - 40px);
-  top: 40px;
+  height: ${(props: ContainerProps): string => (props.active ? `${props.boardLength * 38 + 84}px` : '0')};
+  max-height: calc(100vh - 40px);
+  width: 100vw;
+  bottom: 40px;
   right: 0;
   background-color: ${colors.grey};
   overflow: scroll;
   scroll-behavior: smooth;
-  transition: width 250ms;
+  transition: height 100ms;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-top: 1px dashed ${colors.white};
-`;
-
-export const TitleContainer = styled.div`
-  background-color: ${colors.white};
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 0;
-  margin-bottom: 4px;
-`;
-
-export const Title = styled.h1`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-  font-size: 28px;
-  font-weight: 600;
-  margin: 0;
-  padding: 0;
-  white-space: nowrap;
+  border-radius: 4px 4px 0 0;
 `;
 
 export const ListContainer = styled.div`
@@ -52,7 +51,6 @@ export const ListContainer = styled.div`
   padding-bottom: 16px;
   width: 100%;
   height: 100%;
-  margin-bottom: 75px;
 `;
 
 export const ItemContainer = styled.a`
@@ -91,6 +89,7 @@ export const LinkButton = styled.div`
 `;
 
 export const SelectBar = styled.div`
+  box-sizing: border-box;
   width: calc(100% - 32px);
   /* background-color: white; */
   font-weight: 600;
@@ -99,6 +98,8 @@ export const SelectBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100vw;
+  overflow: hidden;
 `;
 
 export const BlockManagementButton = styled.a`

@@ -15,11 +15,11 @@ import {
   RightContainer,
 } from './styled';
 
-interface TopBarProps {
+interface NavigationBarProps {
   onMenuButtonClick: MouseEventHandler<HTMLAnchorElement>;
 }
 
-export const TopBar = observer(({ onMenuButtonClick = (): void => undefined }: TopBarProps) => {
+export const NavigationBar = observer(({ onMenuButtonClick = (): void => undefined }: NavigationBarProps) => {
   const router = useRouter();
   const { boardStore, topicStore } = useContext(storesContext);
   const { board, topic } = router.query;

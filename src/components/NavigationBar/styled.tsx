@@ -6,7 +6,7 @@ export const Container = styled.div`
   /* background-color: #141518; */
   background-color: ${colors.grey};
   position: sticky;
-  top: 0;
+  bottom: 0;
   color: #fff;
   padding: 8px 16px;
   display: flex;

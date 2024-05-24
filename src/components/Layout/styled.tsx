@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { mq, colors } from '../../styles/variables';
+import { colors, mq } from '../../styles/variables';
 
 export const Container = styled.div`
   margin-left: auto;

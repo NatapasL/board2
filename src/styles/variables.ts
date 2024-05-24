@@ -1,16 +1,10 @@
-import reduct from 'lodash/reduce';
-
 import { BREAKPOINTS } from '../constants/styles';
 
-export const mq = reduct(
-  BREAKPOINTS,
-  (hash, val, key) => {
-    hash[key] = `@media (min-width: ${val}px)`;
+export const mq = Object.entries(BREAKPOINTS).reduce<Record<string, string>>((acc, [key, val]) => {
+  acc[key] = `@media (min-width: ${val}px)`;
 
-    return hash;
-  },
-  {}
-);
+  return acc;
+}, {});
 
 export const zIndex = {
   10: 10,

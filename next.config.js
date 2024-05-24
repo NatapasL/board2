@@ -5,11 +5,11 @@ require('dotenv').config();
  * @type {import('next').NextConfig}
  **/
 
-const nextPWA = require('next-pwa')
+const nextPWA = require('next-pwa');
 
 const withPWA = nextPWA({
-  dest: 'public'
-})
+  dest: 'public',
+});
 
 module.exports = withPWA({
   trailingSlash: true,

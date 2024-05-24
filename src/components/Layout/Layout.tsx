@@ -3,15 +3,15 @@ import { ReactElement, useEffect, useState } from 'react';
 
 import { ScrollButton } from 'src/components/ScrollButton';
 import { Spinner } from 'src/components/Spinner';
+import { NavigationBar } from '../NavigationBar';
 import { SideBar } from '../SideBar';
-import { TopBar } from '../TopBar';
 import { Background, Container } from './styled';
 
 interface LayoutProps {
   children: ReactElement;
 }
 
-export const Layout = ({ children }: LayoutProps) => {
+export const Layout = ({ children }: LayoutProps): ReactElement => {
   const router = useRouter();
   const [sideBarActive, setSideBarActive] = useState(false);
 
@@ -25,7 +25,6 @@ export const Layout = ({ children }: LayoutProps) => {
 
   return (
     <>
-      <TopBar onMenuButtonClick={() => setSideBarActive(!sideBarActive)} />
       <Background>
         <div id="top" />
         <Container>{children}</Container>
@@ -34,6 +33,7 @@ export const Layout = ({ children }: LayoutProps) => {
       <SideBar active={sideBarActive} />
       <ScrollButton active={!sideBarActive} />
       <Spinner />
+      <NavigationBar onMenuButtonClick={(): void => setSideBarActive(!sideBarActive)} />
     </>
   );
 };
