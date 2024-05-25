@@ -5,6 +5,7 @@ import { useSwipeable } from 'react-swipeable';
 import { ScrollButton } from 'src/components/ScrollButton';
 import { Spinner } from 'src/components/Spinner';
 import { NavigationBar } from '../NavigationBar';
+import { SelectBoardSideBar } from '../SelectBoardSideBar';
 import { SideBar } from '../SideBar';
 import { Background, Container } from './styled';
 
@@ -39,6 +40,7 @@ export const Layout = ({ children }: LayoutProps): ReactElement => {
         <div id="bottom" />
       </Background>
       <SideBar active={sideBarActive} />
+      <SelectBoardSideBar active={sideBarActive}></SelectBoardSideBar>
       <ScrollButton active={!sideBarActive} />
       <Spinner />
       <NavigationBar onMenuButtonClick={(): void => setSideBarActive(!sideBarActive)} />

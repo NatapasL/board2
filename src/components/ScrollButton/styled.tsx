@@ -1,14 +1,14 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 interface ContainerProps {
   active?: boolean;
 }
 
-export const Container = styled.div`
+export const Container = styled.div<ContainerProps>`
   position: fixed;
   bottom: 50px;
   right: 2px;
-  transform: ${(props: ContainerProps): string => (props.active ? 'translateY(0)' : 'translateY(calc(100% + 24px))')};
+  transform: ${(props): string => (props.active ? 'translateY(0)' : 'translateY(calc(100% + 24px))')};
   background-color: rgba(237, 239, 241, 0.75);
   display: flex;
 

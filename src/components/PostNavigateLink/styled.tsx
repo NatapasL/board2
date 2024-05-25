@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { mq } from '../../styles/variables';
 
 export const Container = styled.span`

@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 import { colors } from '../../styles/variables';
 import { PostCard } from '../PostCard';
@@ -19,12 +19,12 @@ interface ButtonContainerProps {
   center?: boolean;
 }
 
-export const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div<ButtonContainerProps>`
   display: flex;
   width: 100%;
   margin-top: 16px;
   padding-bottom: 8px;
-  ${(props: ButtonContainerProps): string => (props.center ? `justify-content: center;` : '')}
+  ${(props): string => (props.center ? `justify-content: center;` : '')}
 `;
 
 export const FilterContainer = styled.div`

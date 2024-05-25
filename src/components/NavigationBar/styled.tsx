@@ -1,10 +1,9 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 import { colors } from '../../styles/variables';
 
 export const Container = styled.div`
   box-sizing: border-box;
-  /* background-color: #141518; */
   background-color: ${colors.grey};
   position: sticky;
   bottom: 0;
@@ -62,9 +61,9 @@ interface BackButtonProps {
   transparent?: boolean;
 }
 
-export const BackButton = styled(ActionButton)`
+export const BackButton = styled(ActionButton)<BackButtonProps>`
   padding-right: 8px;
-  ${(props: BackButtonProps): string => (props.transparent ? `opacity: 0;` : '')}
+  ${(props): string => (props.transparent ? `opacity: 0;` : '')}
 `;
 
 export const MenuButton = styled(ActionButton)``;

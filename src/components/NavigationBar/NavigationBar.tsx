@@ -58,7 +58,6 @@ export const NavigationBar = observer(({ onMenuButtonClick = (): void => undefin
     <Container>
       <LeftContainer>{renderBackButton()}</LeftContainer>
       {renderBreadcrumb()}
-      {/* {!currentTopic && <div>Kyou mo kawaii!</div>} */}
       <RightContainer>
         <MenuButton onClick={onMenuButtonClick}>BOARD LIST</MenuButton>
       </RightContainer>

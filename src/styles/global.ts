@@ -1,8 +1,7 @@
-import { css } from '@emotion/core';
-
+import { createGlobalStyle } from 'styled-components';
 import { colors } from './variables';
 
-export const globalStyle = css`
+export const GlobalStyle = createGlobalStyle`
   * {
     font-family: 'Sarabun', sans-serif;
     line-height: 1.35;

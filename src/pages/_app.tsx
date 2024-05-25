@@ -1,10 +1,9 @@
-import { Global } from '@emotion/core';
 import { useRouter } from 'next/router';
 import { ReactElement, useContext, useEffect } from 'react';
 
 import { AppProps } from 'next/app';
 import { storesContext } from '../contexts/storesContext';
-import { globalStyle } from '../styles/global';
+import { GlobalStyle } from '../styles/global';
 
 const App = ({ Component, pageProps }: AppProps): ReactElement => {
   const router = useRouter();
@@ -25,7 +24,7 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
 
   return (
     <>
-      <Global styles={globalStyle} />
+      <GlobalStyle />
       <Component {...pageProps} />
     </>
   );
