@@ -9,6 +9,7 @@ import { URL_REGEX } from '../../constants/regex';
 import { BlockButton } from '../BlockButton';
 import { ThumbnailSection } from '../ThumbnailSection';
 import {
+  ActionButton,
   ActiveContainer,
   Body,
   ButtonContainer,
@@ -16,7 +17,6 @@ import {
   Header,
   PostLink,
   PostNumber,
-  ReplyButton,
   StyledA,
 } from './styled';
 
@@ -98,6 +98,13 @@ export const PostCard = ({ post, className, first, active, onClickReply }: PostC
     router.push(url);
   };
 
+  const handleClickCopyUrl = (): void => {
+    const { board, topic } = router.query;
+    const copyText = `>>>/${board}/${topic}/${post.number}`;
+
+    navigator.clipboard.writeText(copyText);
+  };
+
   const ContainerComponent = active ? ActiveContainer : Container;
 
   return (
@@ -114,7 +121,8 @@ export const PostCard = ({ post, className, first, active, onClickReply }: PostC
         &nbsp;&nbsp;
         <ButtonContainer>
           <BlockButton userId={post.ident} />
-          <ReplyButton onClick={(): void => onClickReply(post.number)}>Reply</ReplyButton>
+          <ActionButton onClick={handleClickCopyUrl}>Url</ActionButton>
+          <ActionButton onClick={(): void => onClickReply(post.number)}>Reply</ActionButton>
         </ButtonContainer>
       </Header>
       <Body>{formatPostBody(post.body)}</Body>

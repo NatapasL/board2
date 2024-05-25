@@ -50,7 +50,7 @@ export const PostLink = styled(StyledA)`
   font-weight: 400;
 `;
 
-export const ReplyButton = styled.button`
+export const ActionButton = styled.button`
   box-sizing: border-box;
   font-weight: 500;
   font-size: 10px;
@@ -62,6 +62,7 @@ export const ReplyButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 24px;
 `;
 
 export const ButtonContainer = styled.div`
