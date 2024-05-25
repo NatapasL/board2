@@ -8,7 +8,7 @@ import { storesContext } from 'src/contexts/storesContext';
 
 export default observer(() => {
   const router = useRouter();
-  const { postStore, topicStore } = useContext(storesContext);
+  const { postStore } = useContext(storesContext);
   const [isRecent, setIsRecent] = useState<boolean>();
   const { posts } = postStore;
 

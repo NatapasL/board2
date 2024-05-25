@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface ContainerProps {
   active?: boolean;
@@ -15,14 +15,29 @@ export const Container = styled.div<ContainerProps>`
   transition: transform 250ms linear;
 `;
 
-export const ArrowContainer = styled.a`
+const button = css`
   padding: 4px 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
+`;
+
+const buttonBorderRight = css`
+  border-right: 1px solid rgba(110, 120, 129, 0.35);
+`;
+
+export const ArrowContainer = styled.a`
+  ${button}
 
   &:first-of-type {
-    border-right: 1px solid rgba(110, 120, 129, 0.35);
+    ${buttonBorderRight}
   }
+`;
+
+export const RefreshButton = styled.button`
+  border: none;
+  line-height: 1;
+  ${button}
+  ${buttonBorderRight}
 `;
