@@ -35,11 +35,12 @@ export const ReplyForm = observer((): ReactElement => {
 
   return (
     <Form onSubmit={handleFormSubmit}>
-      <Textarea placeholder="Reply to this topic." onChange={handleTextareaChange}></Textarea>
       <BumpTopicButton onClick={handleClickBumpTopicButton}>
         <div>Bump topic:</div>
         <BumpTopicSign>{form.bumpTopic ? '✓' : '✗'}</BumpTopicSign>
       </BumpTopicButton>
+
+      <Textarea placeholder="Reply to this topic." onChange={handleTextareaChange}></Textarea>
       <SubmitButton disabled={!form.text.length}>Reply</SubmitButton>
     </Form>
   );

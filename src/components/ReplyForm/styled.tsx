@@ -37,7 +37,7 @@ export const BumpTopicButton = styled.button`
   justify-content: flex-end;
   column-gap: 4px;
   font-size: 12px;
-  height: 21px;
+  height: 32px;
   border: none;
 `;
 
