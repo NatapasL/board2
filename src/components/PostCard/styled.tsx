@@ -49,3 +49,21 @@ export const PostLink = styled(StyledA)`
   font-size: 14px;
   font-weight: 400;
 `;
+
+export const ReplyButton = styled.button`
+  box-sizing: border-box;
+  font-weight: 500;
+  font-size: 10px;
+  background-color: ${colors.white};
+  display: inline-flex;
+  cursor: pointer;
+  padding: 4px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ButtonContainer = styled.div`
+  display: inline-flex;
+`;

@@ -26,6 +26,7 @@ interface TopicPageProps {
 export const TopicPage = observer(({ posts, isRecent }: TopicPageProps) => {
   const router = useRouter();
   const [activePostNumber, setActivePostNumber] = useState(-1);
+  const [replyPostNumber, setReplyPostNumber] = useState<number>();
 
   const { topicStore, boardStore, blockStore } = useContext(storesContext);
   const topic = topicStore.currentTopic;
@@ -95,11 +96,19 @@ export const TopicPage = observer(({ posts, isRecent }: TopicPageProps) => {
     );
   };
 
+  const handleClickReply = (postNumber: number): void => {
+    setReplyPostNumber(postNumber);
+  };
+
+  const handleAddReplyPostNumberToInputComplete = () => {
+    setReplyPostNumber(undefined);
+  };
+
   const renderFirstPost = (): ReactElement => {
     const firstPost = posts.find(post => Number(post.number) === 1);
     if (!firstPost) return <div />;
 
-    return <FirstPostCard post={firstPost} first />;
+    return <FirstPostCard post={firstPost} first onClickReply={handleClickReply} />;
   };
 
   return (
@@ -112,12 +121,20 @@ export const TopicPage = observer(({ posts, isRecent }: TopicPageProps) => {
       <FilterContainer>{isRecent ? 'LATEST POSTS' : 'ALL POSTS'}</FilterContainer>
       <Body>
         {filteredPosts.map(post => (
-          <StyledPostCard key={post.id} post={post} active={post.number === activePostNumber} />
+          <StyledPostCard
+            key={post.id}
+            post={post}
+            active={post.number === activePostNumber}
+            onClickReply={handleClickReply}
+          />
         ))}
         {renderSeeAllButton(true)}
       </Body>
       <ReplySection>
-        <ReplyForm></ReplyForm>
+        <ReplyForm
+          replyPostNumber={replyPostNumber}
+          onAddReplyPostNumberToInputComplete={handleAddReplyPostNumberToInputComplete}
+        ></ReplyForm>
       </ReplySection>
     </>
   );

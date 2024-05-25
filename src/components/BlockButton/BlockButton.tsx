@@ -18,5 +18,5 @@ export const BlockButton = observer(({ userId }: BlockButtonProps): ReactElement
     }
   };
 
-  return <Button onClick={(): void => onClick()}>BLOCK</Button>;
+  return <Button onClick={(): void => onClick()}>Block</Button>;
 });

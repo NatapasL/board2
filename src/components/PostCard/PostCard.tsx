@@ -8,7 +8,17 @@ import { Post } from 'src/models';
 import { URL_REGEX } from '../../constants/regex';
 import { BlockButton } from '../BlockButton';
 import { ThumbnailSection } from '../ThumbnailSection';
-import { ActiveContainer, Body, Container, Header, PostLink, PostNumber, StyledA } from './styled';
+import {
+  ActiveContainer,
+  Body,
+  ButtonContainer,
+  Container,
+  Header,
+  PostLink,
+  PostNumber,
+  ReplyButton,
+  StyledA,
+} from './styled';
 
 dayjs.extend(relativeTime);
 
@@ -17,9 +27,10 @@ interface PostCardProps {
   className?: string;
   first?: boolean;
   active?: boolean;
+  onClickReply: (postNumber: number) => void;
 }
 
-export const PostCard = ({ post, className, first, active }: PostCardProps): ReactElement => {
+export const PostCard = ({ post, className, first, active, onClickReply }: PostCardProps): ReactElement => {
   const router = useRouter();
 
   const displayCreatedAt = (): string => {
@@ -99,8 +110,12 @@ export const PostCard = ({ post, className, first, active }: PostCardProps): Rea
           </>
         )}
         {displayCreatedAt()}
-        {post.bumped ? '!' : ' '}&nbsp;&nbsp;
-        <BlockButton userId={post.ident} />
+        {post.bumped ? '!' : ' '}
+        &nbsp;&nbsp;
+        <ButtonContainer>
+          <BlockButton userId={post.ident} />
+          <ReplyButton onClick={(): void => onClickReply(post.number)}>Reply</ReplyButton>
+        </ButtonContainer>
       </Header>
       <Body>{formatPostBody(post.body)}</Body>
       <ThumbnailSection post={post}></ThumbnailSection>
