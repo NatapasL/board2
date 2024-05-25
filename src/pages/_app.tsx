@@ -5,6 +5,10 @@ import { AppProps } from 'next/app';
 import { storesContext } from '../contexts/storesContext';
 import { GlobalStyle } from '../styles/global';
 
+import React from 'react';
+
+React.useLayoutEffect = React.useEffect;
+
 const App = ({ Component, pageProps }: AppProps): ReactElement => {
   const router = useRouter();
   const { boardStore, topicStore } = useContext(storesContext);
