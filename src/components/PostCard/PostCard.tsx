@@ -11,7 +11,7 @@ import { ActiveContainer, Body, Container, Header, PostLink, PostNumber, StyledA
 
 dayjs.extend(relativeTime);
 
-export interface PostCardProps {
+interface PostCardProps {
   post: Post;
   className?: string;
   first?: boolean;
@@ -98,7 +98,7 @@ export const PostCard = ({ post, className, first, active }: PostCardProps): Rea
           </>
         )}
         {displayCreatedAt()}
-        &nbsp;&nbsp;❯&nbsp;&nbsp;
+        &nbsp;{post.bumped ? '⬆' : ' '}&nbsp;&nbsp;
         <BlockButton userId={post.ident} />
       </Header>
       <Body>{formatPostBody(post.body)}</Body>
