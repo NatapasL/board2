@@ -24,6 +24,7 @@ const button = css`
   border: none;
   line-height: 1;
   height: 32px;
+  background-color: none;
 `;
 
 const buttonBorderRight = css`

@@ -32,6 +32,7 @@ export const SubmitButton = styled.button`
 `;
 
 export const BumpTopicButton = styled.button`
+  background-color: none;
   display: flex;
   justify-content: flex-end;
   column-gap: 4px;
