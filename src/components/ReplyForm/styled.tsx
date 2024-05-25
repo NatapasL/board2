@@ -33,7 +33,7 @@ export const SubmitButton = styled.button`
 `;
 
 export const BumpTopicButton = styled.button`
-  background-color: none;
+  background-color: ${colors.grey};
   display: flex;
   justify-content: flex-end;
   align-items: center;
