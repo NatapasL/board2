@@ -4,6 +4,7 @@ import { ReactElement, useEffect, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { ScrollButton } from 'src/components/ScrollButton';
 import { Spinner } from 'src/components/Spinner';
+import { SCROLL_ID_BOTTOM, SCROLL_ID_TOP } from 'src/constants/scrollId';
 import { NavigationBar } from '../NavigationBar';
 import { SelectBoardSideBar } from '../SelectBoardSideBar';
 import { SideBar } from '../SideBar';
@@ -35,9 +36,9 @@ export const Layout = ({ children }: LayoutProps): ReactElement => {
   return (
     <>
       <Background>
-        <div id="top" />
+        <div id={SCROLL_ID_TOP} />
         <Container {...handlers}>{children}</Container>
-        <div id="bottom" />
+        <div id={SCROLL_ID_BOTTOM} />
       </Background>
       <SideBar active={sideBarActive} />
       <SelectBoardSideBar active={sideBarActive}></SelectBoardSideBar>

@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
 import { ReactElement, useContext } from 'react';
+import { SCROLL_ID_BOTTOM, SCROLL_ID_TOP } from 'src/constants/scrollId';
 import { storesContext } from 'src/contexts/storesContext';
 import { ArrowContainer, Container, RefreshButton } from './styled';
 
@@ -26,11 +27,15 @@ export const ScrollButton = observer(({ active }: ScrollButtonProps): ReactEleme
     }
   };
 
+  const handleClickArrowContainer = (scrollId: string): void => {
+    document.getElementById(scrollId)?.scrollIntoView({ behavior: 'instant' });
+  };
+
   return (
     <Container active={active}>
       <RefreshButton onClick={handleClickRefresh}>⟳</RefreshButton>
-      <ArrowContainer href="#top">↑</ArrowContainer>
-      <ArrowContainer href="#bottom">↓</ArrowContainer>
+      <ArrowContainer onClick={(): void => handleClickArrowContainer(SCROLL_ID_TOP)}>↑</ArrowContainer>
+      <ArrowContainer onClick={(): void => handleClickArrowContainer(SCROLL_ID_BOTTOM)}>↓</ArrowContainer>
     </Container>
   );
 });

@@ -21,23 +21,24 @@ const button = css`
   justify-content: center;
   align-items: center;
   font-size: 20px;
+  border: none;
+  line-height: 1;
+  height: 32px;
 `;
 
 const buttonBorderRight = css`
   border-right: 1px solid rgba(110, 120, 129, 0.35);
 `;
 
-export const ArrowContainer = styled.a`
+export const ArrowContainer = styled.button`
   ${button}
 
-  &:first-of-type {
+  &:not(:last-of-type) {
     ${buttonBorderRight}
   }
 `;
 
 export const RefreshButton = styled.button`
-  border: none;
-  line-height: 1;
   ${button}
   ${buttonBorderRight}
 `;
