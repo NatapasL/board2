@@ -9,6 +9,7 @@ export const Textarea = styled.textarea`
   height: 114px;
   padding: 6px;
   border-radius: 2px;
+  font-size: 16px;
 `;
 
 export const Form = styled.form`
@@ -35,6 +36,7 @@ export const BumpTopicButton = styled.button`
   background-color: none;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   column-gap: 4px;
   font-size: 12px;
   height: 32px;
