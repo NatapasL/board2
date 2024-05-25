@@ -14,8 +14,8 @@ export const ReplyForm = observer(
   ({ replyPostNumber, onAddReplyPostNumberToInputComplete }: ReplyFormProps): ReactElement => {
     const { topicStore, postStore } = useContext(storesContext);
     const { currentTopic } = topicStore;
-    const formRef = useRef<HTMLFormElement>();
-    const textareaRef = useRef<HTMLInputElement>();
+    const formRef = useRef<HTMLFormElement>(null);
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     const [form, setForm] = useState<PostReplyForm>({
       text: '',
