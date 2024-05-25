@@ -2,33 +2,20 @@ import { observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 
-import { getAllPosts, getRecentPosts } from 'src/api/postApi';
 import { Layout } from 'src/components/Layout';
-import { hideSpinner, showSpinner } from 'src/components/Spinner';
 import { TopicPage } from 'src/components/TopicPage';
 import { storesContext } from 'src/contexts/storesContext';
 
 export default observer(() => {
   const router = useRouter();
-  const { postStore } = useContext(storesContext);
+  const { postStore, topicStore } = useContext(storesContext);
   const [isRecent, setIsRecent] = useState<boolean>();
   const { posts } = postStore;
 
-  const fetchData = (topic: string, recent: boolean | number): void => {
+  const fetchData = (topicId: string, recent: boolean | number): void => {
     postStore.setPosts([]);
-    showSpinner();
 
-    if (recent) {
-      getRecentPosts(topic).then(({ data }) => {
-        postStore.setPosts(data.posts);
-        hideSpinner();
-      });
-    } else {
-      getAllPosts(topic).then(({ data }) => {
-        postStore.setPosts(data);
-        hideSpinner();
-      });
-    }
+    recent ? postStore.fetchRecentPosts(topicId) : postStore.fetchAllPosts(topicId);
   };
 
   useEffect(() => {

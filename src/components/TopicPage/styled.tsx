@@ -52,3 +52,7 @@ export const FirstPostCard = styled(PostCard)`
   padding-right: 0;
   padding-bottom: 12px;
 `;
+
+export const ReplySection = styled.div`
+  padding-bottom: 32px;
+`;

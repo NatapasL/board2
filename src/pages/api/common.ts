@@ -4,6 +4,7 @@ import {
   HANDLER_ALL_POSTS,
   HANDLER_ALL_TOPICS,
   HANDLER_GET_TOPIC,
+  HANDLER_POST_REPLY,
   HANDLER_RECENT_POSTS,
   HANDLER_RECENT_TOPICS,
 } from 'src/constants/api';
@@ -38,6 +39,11 @@ export default function handler(request: NextApiRequest, response: NextApiRespon
       return;
     case HANDLER_ALL_POSTS:
       axios.get(`https://fanboi.ch/api/1.0/topics/${request.query.topic_id}/posts`).then(res => {
+        response.send(res.data);
+      });
+      return;
+    case HANDLER_POST_REPLY:
+      axios.post(`https://fanboi.ch/api/1.0/topics/${request.query.topic_id}/posts/`, request.body).then(res => {
         response.send(res.data);
       });
       return;

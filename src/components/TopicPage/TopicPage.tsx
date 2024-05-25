@@ -6,7 +6,17 @@ import { ReactElement, useContext, useEffect, useMemo, useState } from 'react';
 import { Post } from 'src/models';
 import { storesContext } from '../../contexts/storesContext';
 import { Button } from '../Button';
-import { Body, ButtonContainer, FilterContainer, FirstPostCard, Header, StyledPostCard, Title } from './styled';
+import { ReplyForm } from '../ReplyForm';
+import {
+  Body,
+  ButtonContainer,
+  FilterContainer,
+  FirstPostCard,
+  Header,
+  ReplySection,
+  StyledPostCard,
+  Title,
+} from './styled';
 
 interface TopicPageProps {
   posts: Post[];
@@ -85,7 +95,7 @@ export const TopicPage = observer(({ posts, isRecent }: TopicPageProps) => {
     );
   };
 
-  const renderFirstPost = () => {
+  const renderFirstPost = (): ReactElement => {
     const firstPost = posts.find(post => Number(post.number) === 1);
     if (!firstPost) return <div />;
 
@@ -106,6 +116,9 @@ export const TopicPage = observer(({ posts, isRecent }: TopicPageProps) => {
         ))}
         {renderSeeAllButton(true)}
       </Body>
+      <ReplySection>
+        <ReplyForm></ReplyForm>
+      </ReplySection>
     </>
   );
 });

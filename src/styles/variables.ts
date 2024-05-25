@@ -26,4 +26,6 @@ export const colors = {
   grey: '#EDEFF1',
   link: '#0079D3',
   highlight: '#AFC9CF',
+  submitButton: '#b7c9e2',
+  somegrey: '#d3d3d3',
 };

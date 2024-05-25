@@ -2,10 +2,8 @@ import { observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 
-import { getAllTopics, getRecentTopics } from 'src/api/topicApi';
 import { BoardPage } from 'src/components/BoardPage';
 import { Layout } from 'src/components/Layout';
-import { hideSpinner, showSpinner } from 'src/components/Spinner';
 import { storesContext } from 'src/contexts/storesContext';
 
 export default observer(() => {
@@ -14,21 +12,12 @@ export default observer(() => {
   const [isAll, setIsAll] = useState<boolean>();
   const { topics } = topicStore;
 
-  const fetchData = (board: string, all?: boolean): void => {
+  const fetchData = (boardSlug: string, isFetchAllTopic?: boolean): void => {
     topicStore.setTopics([]);
-    showSpinner();
 
-    if (all) {
-      getAllTopics(board).then(({ data }) => {
-        topicStore.setTopics(data);
-        hideSpinner();
-      });
-    } else {
-      getRecentTopics(board).then(({ data }) => {
-        topicStore.setTopics(data.topics);
-        hideSpinner();
-      });
-    }
+    if (isFetchAllTopic) topicStore.fetchAllTopics(boardSlug);
+
+    topicStore.fetchRecentTopics(boardSlug);
   };
 
   useEffect(() => {

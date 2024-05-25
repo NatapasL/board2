@@ -4,4 +4,5 @@ export interface Post {
   ident: string;
   body: string;
   created_at: string;
+  bumped: boolean;
 }
