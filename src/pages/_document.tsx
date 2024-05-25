@@ -9,6 +9,7 @@ const Document = (): ReactElement => (
         rel="stylesheet"
       ></link>
       <link rel="manifest" href="/manifest.json" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
     </Head>
     <body>
       <Main />
