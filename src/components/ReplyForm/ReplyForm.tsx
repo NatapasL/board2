@@ -32,6 +32,7 @@ export const ReplyForm = observer(
       onAddReplyPostNumberToInputComplete();
 
       formRef.current?.scrollIntoView({ behavior: 'auto' });
+      textareaRef.current?.focus();
     }, [replyPostNumber]);
 
     const handleTextareaChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
