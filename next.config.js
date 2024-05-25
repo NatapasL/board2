@@ -26,4 +26,7 @@ module.exports = withPWA({
     HOST: process.env.HOST || 'http://0.0.0.0:3000',
     BACKEND_BASE_URL: process.env.BACKEND_BASE_URL || '/api/common',
   },
+  compiler: {
+    styledComponents: true
+  }
 });
