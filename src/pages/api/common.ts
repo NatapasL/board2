@@ -44,6 +44,9 @@ export default function handler(request: NextApiRequest, response: NextApiRespon
       return;
     case HANDLER_POST_REPLY:
       axios.post(`${process.env.FANBOI_URL}/topics/${request.query.topic_id}/posts/`, request.body).then(res => {
+        console.log(res.data);
+        console.log(res.status);
+        console.log('===========================');
         response.send(res.data);
       });
       return;
