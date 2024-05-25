@@ -25,6 +25,7 @@ module.exports = withPWA({
   env: {
     HOST: process.env.HOST || 'http://0.0.0.0:3000',
     BACKEND_BASE_URL: process.env.BACKEND_BASE_URL || '/api/common',
+    FANBOI_URL: process.env.FANBOI_URL || 'https://fanboi.ch/api/1.0'
   },
   compiler: {
     styledComponents: true
