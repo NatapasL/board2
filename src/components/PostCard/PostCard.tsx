@@ -7,6 +7,7 @@ import processString from 'react-process-string';
 import { Post } from 'src/models';
 import { URL_REGEX } from '../../constants/regex';
 import { BlockButton } from '../BlockButton';
+import { ThumbnailSection } from '../ThumbnailSection';
 import { ActiveContainer, Body, Container, Header, PostLink, PostNumber, StyledA } from './styled';
 
 dayjs.extend(relativeTime);
@@ -98,10 +99,11 @@ export const PostCard = ({ post, className, first, active }: PostCardProps): Rea
           </>
         )}
         {displayCreatedAt()}
-        &nbsp;{post.bumped ? '⬆' : ' '}&nbsp;&nbsp;
+        {post.bumped ? '!' : ' '}&nbsp;&nbsp;
         <BlockButton userId={post.ident} />
       </Header>
       <Body>{formatPostBody(post.body)}</Body>
+      <ThumbnailSection post={post}></ThumbnailSection>
     </ContainerComponent>
   );
 };

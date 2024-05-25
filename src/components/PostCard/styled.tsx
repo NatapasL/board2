@@ -38,6 +38,7 @@ export const Body = styled.div`
   word-break: break-all;
   font-size: 16px;
   margin-bottom: 8px;
+  line-height: 1.5;
 `;
 
 export const StyledA = styled.a`

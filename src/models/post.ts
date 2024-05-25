@@ -5,4 +5,5 @@ export interface Post {
   body: string;
   created_at: string;
   bumped: boolean;
+  body_formatted: string;
 }
