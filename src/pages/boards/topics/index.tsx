@@ -19,7 +19,7 @@ export default observer(() => {
     if (recent) {
       postStore.fetchRecentPosts(topicId).then(() => {
         setTimeout(() => {
-          document.getElementById(SCROLL_ID_BOTTOM)?.scrollIntoView({ behavior: 'instant' });
+          document.getElementById(SCROLL_ID_BOTTOM)?.scrollIntoView({ behavior: 'auto' });
         });
       });
 

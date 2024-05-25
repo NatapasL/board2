@@ -28,7 +28,7 @@ export const ScrollButton = observer(({ active }: ScrollButtonProps): ReactEleme
   };
 
   const handleClickArrowContainer = (scrollId: string): void => {
-    document.getElementById(scrollId)?.scrollIntoView({ behavior: 'instant' });
+    document.getElementById(scrollId)?.scrollIntoView({ behavior: 'auto' });
   };
 
   return (
