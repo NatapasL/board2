@@ -18,35 +18,32 @@ export default function handler(request: NextApiRequest, response: NextApiRespon
 
   switch (handler) {
     case HANDLER_RECENT_TOPICS:
-      axios.get(`${process.env.FANBOI_URL}/boards/${request.query.board_slug}?topics=1`).then(res => {
+      axios.get(`${process.env.BOARD_URL}/boards/${request.query.board_slug}?topics=1`).then(res => {
         response.send(res.data);
       });
       return;
     case HANDLER_ALL_TOPICS:
-      axios.get(`${process.env.FANBOI_URL}/boards/${request.query.board_slug}/topics`).then(res => {
+      axios.get(`${process.env.BOARD_URL}/boards/${request.query.board_slug}/topics`).then(res => {
         response.send(res.data);
       });
       return;
     case HANDLER_GET_TOPIC:
-      axios.get(`${process.env.FANBOI_URL}/topics/${request.query.topic_id}`).then(res => {
+      axios.get(`${process.env.BOARD_URL}/topics/${request.query.topic_id}`).then(res => {
         response.send(res.data);
       });
       return;
     case HANDLER_RECENT_POSTS:
-      axios.get(`${process.env.FANBOI_URL}/topics/${request.query.topic_id}?posts=1`).then(res => {
+      axios.get(`${process.env.BOARD_URL}/topics/${request.query.topic_id}?posts=1`).then(res => {
         response.send(res.data);
       });
       return;
     case HANDLER_ALL_POSTS:
-      axios.get(`${process.env.FANBOI_URL}/topics/${request.query.topic_id}/posts`).then(res => {
+      axios.get(`${process.env.BOARD_URL}/topics/${request.query.topic_id}/posts`).then(res => {
         response.send(res.data);
       });
       return;
     case HANDLER_POST_REPLY:
-      axios.post(`${process.env.FANBOI_URL}/topics/${request.query.topic_id}/posts/`, request.body).then(res => {
-        console.log(res.data);
-        console.log(res.status);
-        console.log('===========================');
+      axios.post(`${process.env.BOARD_URL}/topics/${request.query.topic_id}/posts/`, request.body).then(res => {
         response.send(res.data);
       });
       return;
