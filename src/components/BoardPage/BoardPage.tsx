@@ -18,7 +18,7 @@ export const BoardPage = observer(({ topics, isAll }: BoardPageProps): ReactElem
 
   if (!board) return <div />;
 
-  const renderSeeAllButton = () => {
+  const renderSeeAllButton = (): ReactElement => {
     if (isAll) return <div />;
 
     return (
