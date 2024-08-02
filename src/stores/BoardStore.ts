@@ -1,8 +1,9 @@
 import { action, computed, observable } from 'mobx';
+import BOARD_LIST_JSON from '../json/boards.json';
 
 import { Board } from 'src/models';
 
-const BOARD_LIST: Board[] = JSON.parse(process.env.NEXT_PUBLIC_BOARD_LIST || `[]`);
+const BOARD_LIST: Board[] = BOARD_LIST_JSON;
 
 class BoardStore {
   @observable boardList: Board[] = [];

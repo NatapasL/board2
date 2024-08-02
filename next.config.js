@@ -26,7 +26,6 @@ module.exports = withPWA({
     HOST: process.env.HOST || 'http://0.0.0.0:3000',
     BACKEND_BASE_URL: process.env.BACKEND_BASE_URL || '/api/common',
     BOARD_URL: process.env.BOARD_URL,
-    NEXT_PUBLIC_BOARD_LIST: process.env.NEXT_PUBLIC_BOARD_LIST
   },
   compiler: {
     styledComponents: true
